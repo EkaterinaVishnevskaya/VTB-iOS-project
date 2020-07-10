@@ -15,6 +15,9 @@
 		F03879B424A9F9D000938079 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F03879B224A9F9D000938079 /* LaunchScreen.storyboard */; };
 		F03879BF24A9F9D100938079 /* VTB_iOS_projectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F03879BE24A9F9D100938079 /* VTB_iOS_projectTests.swift */; };
 		F03879CA24A9F9D100938079 /* VTB_iOS_projectUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F03879C924A9F9D100938079 /* VTB_iOS_projectUITests.swift */; };
+		F0387A7F24B21C0D00938079 /* BookCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0387A7E24B21C0D00938079 /* BookCell.swift */; };
+		F0387A8124B21C7E00938079 /* BookModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0387A8024B21C7E00938079 /* BookModel.swift */; };
+		F0F87BAC24B704F700FBDBE5 /* Book.png in Resources */ = {isa = PBXBuildFile; fileRef = F0F87BAB24B704F700FBDBE5 /* Book.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +52,9 @@
 		F03879C524A9F9D100938079 /* VTB-iOS-projectUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "VTB-iOS-projectUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F03879C924A9F9D100938079 /* VTB_iOS_projectUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VTB_iOS_projectUITests.swift; sourceTree = "<group>"; };
 		F03879CB24A9F9D100938079 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F0387A7E24B21C0D00938079 /* BookCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookCell.swift; sourceTree = "<group>"; };
+		F0387A8024B21C7E00938079 /* BookModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookModel.swift; sourceTree = "<group>"; };
+		F0F87BAB24B704F700FBDBE5 /* Book.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Book.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,11 +105,13 @@
 		F03879A624A9F9CC00938079 /* VTB-iOS-project */ = {
 			isa = PBXGroup;
 			children = (
+				F0387A7D24B21BE600938079 /* CollectionCell */,
 				F03879A724A9F9CC00938079 /* AppDelegate.swift */,
 				F03879A924A9F9CC00938079 /* SceneDelegate.swift */,
 				F03879AB24A9F9CC00938079 /* ViewController.swift */,
 				F03879AD24A9F9CC00938079 /* Main.storyboard */,
 				F03879B024A9F9D000938079 /* Assets.xcassets */,
+				F0F87BAB24B704F700FBDBE5 /* Book.png */,
 				F03879B224A9F9D000938079 /* LaunchScreen.storyboard */,
 				F03879B524A9F9D000938079 /* Info.plist */,
 			);
@@ -126,6 +134,15 @@
 				F03879CB24A9F9D100938079 /* Info.plist */,
 			);
 			path = "VTB-iOS-projectUITests";
+			sourceTree = "<group>";
+		};
+		F0387A7D24B21BE600938079 /* CollectionCell */ = {
+			isa = PBXGroup;
+			children = (
+				F0387A7E24B21C0D00938079 /* BookCell.swift */,
+				F0387A8024B21C7E00938079 /* BookModel.swift */,
+			);
+			path = CollectionCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -235,6 +252,7 @@
 				F03879B424A9F9D000938079 /* LaunchScreen.storyboard in Resources */,
 				F03879B124A9F9D000938079 /* Assets.xcassets in Resources */,
 				F03879AF24A9F9CC00938079 /* Main.storyboard in Resources */,
+				F0F87BAC24B704F700FBDBE5 /* Book.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -259,8 +277,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F0387A8124B21C7E00938079 /* BookModel.swift in Sources */,
 				F03879AC24A9F9CC00938079 /* ViewController.swift in Sources */,
 				F03879A824A9F9CC00938079 /* AppDelegate.swift in Sources */,
+				F0387A7F24B21C0D00938079 /* BookCell.swift in Sources */,
 				F03879AA24A9F9CC00938079 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
