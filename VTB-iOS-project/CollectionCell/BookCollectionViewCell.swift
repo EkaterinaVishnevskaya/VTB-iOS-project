@@ -7,19 +7,20 @@
 //
 import UIKit
 
-final class BookCell: UICollectionViewCell{
+final class BookCollectionViewCell: UICollectionViewCell{
 
     // MARK: - Properties
     
     private var nameLabel: UILabel!
-    private var coverImage: UIImageView!
+    private var coverImageView: UIImageView!
     
     
     var viewModel: BookModel? {
         didSet {
-            if let viewModel = viewModel {
-                updateContent(with: viewModel)
+            guard let viewModel = viewModel else {
+               return
             }
+            updateContent(viewModel: viewModel)
         }
     }
     
@@ -29,15 +30,15 @@ final class BookCell: UICollectionViewCell{
         nameLabel.textColor = .white
         nameLabel.backgroundColor = .black
         nameLabel.translatesAutoresizingMaskIntoConstraints = false
-        coverImage = UIImageView(frame: .zero)
-        coverImage.image = UIImage(contentsOfFile: "Book")
-        coverImage.contentMode = .scaleAspectFit
-        coverImage.translatesAutoresizingMaskIntoConstraints = false
+        coverImageView = UIImageView(frame: .zero)
+        coverImageView.image = UIImage(contentsOfFile: "Book.png")
+        coverImageView.contentMode = .scaleAspectFit
+        coverImageView.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(nameLabel)
-        contentView.addSubview(coverImage)
+        contentView.addSubview(coverImageView)
         contentView.layer.borderWidth = 1
         contentView.layer.borderColor = UIColor.white.cgColor
-        NSLayoutConstraint.activate([coverImage.leftAnchor.constraint(equalTo: contentView.leftAnchor), coverImage.topAnchor.constraint(equalTo: contentView.topAnchor), coverImage.heightAnchor.constraint(equalTo: contentView.heightAnchor), nameLabel.leftAnchor.constraint(equalTo: coverImage.leftAnchor, constant: 20)])
+        NSLayoutConstraint.activate([coverImageView.leftAnchor.constraint(equalTo: contentView.leftAnchor), coverImageView.topAnchor.constraint(equalTo: contentView.topAnchor), coverImageView.heightAnchor.constraint(equalTo: contentView.heightAnchor), nameLabel.leftAnchor.constraint(equalTo: coverImageView.leftAnchor, constant: 20)])
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -46,7 +47,7 @@ final class BookCell: UICollectionViewCell{
     
     // MARK: - Public
     
-    private func updateContent(with viewModel: BookModel) {
+    private func updateContent(viewModel: BookModel) {
         nameLabel.text = viewModel.name
     }
 }

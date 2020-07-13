@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BookModel: NSObject {
+class BookModel {
     
     var name: String
     var cover: UIImage

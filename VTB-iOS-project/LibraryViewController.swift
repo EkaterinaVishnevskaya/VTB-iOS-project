@@ -12,20 +12,20 @@ protocol ViewControllerInput {
     func dataLoaded()
 }
 
-class ViewController: UIViewController {
+class LibraryViewController: UIViewController {
     
     // MARK: - Constants
     
     private enum Locals {
         static let cellID = "cell"
-        static let height = CGFloat(150)
+        static let height: CGFloat = 150
     }
     
     
     // MARK: - Properties
 
     private var collectionView: UICollectionView!
-    private var BookModels: [BookModel] = [] {
+    private var bookModels: [BookModel] = [] {
         didSet {
             collectionView.reloadData()
         }
@@ -58,27 +58,27 @@ class ViewController: UIViewController {
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([collectionView.topAnchor.constraint(equalTo: safeArea.topAnchor), collectionView.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor), collectionView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor),collectionView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor)
         ])
-        collectionView.register(BookCell.self, forCellWithReuseIdentifier: Locals.cellID)
+        collectionView.register(BookCollectionViewCell.self, forCellWithReuseIdentifier: Locals.cellID)
     }
 
     private func loadData() {
         
-        BookModels = [BookModel(name: "one"), BookModel(name: "two"), BookModel(name: "three"), BookModel(name: "four"), BookModel(name: "five"), BookModel(name: "six"), BookModel(name: "seven"), BookModel(name: "eight"), BookModel(name: "nine"),BookModel(name: "ten"), BookModel(name: "un"), BookModel(name: "deux"),BookModel(name: "trois"), BookModel(name: "quatre"), BookModel(name: "cinq"),BookModel(name: "six"), BookModel(name: "sept"), BookModel(name: "huit"),BookModel(name: "neuf"), BookModel(name: "dix"), BookModel(name: "один"), BookModel(name: "два"),BookModel(name: "три"), BookModel(name: "четыре"), BookModel(name: "пять"),BookModel(name: "шесть"), BookModel(name: "семь"), BookModel(name: "восемь"),BookModel(name: "девять"), BookModel(name: "десять")]
+        bookModels = [BookModel(name: "one"), BookModel(name: "two"), BookModel(name: "three"), BookModel(name: "four"), BookModel(name: "five"), BookModel(name: "six"), BookModel(name: "seven"), BookModel(name: "eight"), BookModel(name: "nine"),BookModel(name: "ten"), BookModel(name: "un"), BookModel(name: "deux"),BookModel(name: "trois"), BookModel(name: "quatre"), BookModel(name: "cinq"),BookModel(name: "six"), BookModel(name: "sept"), BookModel(name: "huit"),BookModel(name: "neuf"), BookModel(name: "dix"), BookModel(name: "один"), BookModel(name: "два"),BookModel(name: "три"), BookModel(name: "четыре"), BookModel(name: "пять"),BookModel(name: "шесть"), BookModel(name: "семь"), BookModel(name: "восемь"),BookModel(name: "девять"), BookModel(name: "десять")]
     }
 }
 
 
 // MARK: - UICollectionViewDataSource & UICollectionViewDelegate
 
-extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
+extension LibraryViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return BookModels.count
+        return bookModels.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Locals.cellID, for: indexPath) as? BookCell {
-            cell.viewModel = BookModels[indexPath.row]
+        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Locals.cellID, for: indexPath) as? BookCollectionViewCell {
+            cell.viewModel = bookModels[indexPath.row]
             return cell
         }
         
@@ -88,7 +88,7 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
 }
 
 // MARK: - UICollectionViewDelegateFlowLayout
-extension ViewController: UICollectionViewDelegateFlowLayout {
+extension LibraryViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: UIScreen.main.bounds.width, height: Locals.height)
@@ -103,7 +103,7 @@ extension ViewController: UICollectionViewDelegateFlowLayout {
     }
 }
 
-extension ViewController: ViewControllerInput {
+extension LibraryViewController: ViewControllerInput {
     
     func dataLoaded() {
         // Do something
