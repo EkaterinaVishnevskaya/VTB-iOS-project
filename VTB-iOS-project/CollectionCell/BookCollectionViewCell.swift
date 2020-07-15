@@ -33,19 +33,12 @@ final class BookCollectionViewCell: UICollectionViewCell{
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        nameLabel = UILabel()
-        nameLabel.textColor = .white
-        nameLabel.backgroundColor = .black
-        nameLabel.translatesAutoresizingMaskIntoConstraints = false
-        coverImageView = UIImageView()
-        coverImageView.image = UIImage(named: "Book")
-        coverImageView.contentMode = .scaleAspectFit
-        coverImageView.translatesAutoresizingMaskIntoConstraints = false
-        contentView.addSubview(nameLabel)
-        contentView.addSubview(coverImageView)
+        addAndConfigureNameView()
+        addAndConfigureCoverView()
         contentView.layer.borderWidth = 1
         contentView.layer.borderColor = UIColor.white.cgColor
-        NSLayoutConstraint.activate([coverImageView.leftAnchor.constraint(equalTo: contentView.leftAnchor), coverImageView.topAnchor.constraint(equalTo: contentView.topAnchor), coverImageView.heightAnchor.constraint(equalTo: contentView.heightAnchor), coverImageView.widthAnchor.constraint(lessThanOrEqualToConstant: 100), nameLabel.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 120)])
+        setConstraints()
+        
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -57,6 +50,27 @@ final class BookCollectionViewCell: UICollectionViewCell{
     private func updateContent(viewModel: BookModel) {
         nameLabel.text = viewModel.name
         coverImageView.image = viewModel.cover
+    }
+    
+    // MARK: -UI
+    private func addAndConfigureCoverView () {
+        coverImageView = UIImageView()
+        coverImageView.image = UIImage(named: "Book")
+        coverImageView.contentMode = .scaleAspectFit
+        coverImageView.translatesAutoresizingMaskIntoConstraints = false
+        contentView.addSubview(coverImageView)
+    }
+    
+    private func addAndConfigureNameView () {
+        nameLabel = UILabel()
+        nameLabel.textColor = .white
+        nameLabel.backgroundColor = .black
+        nameLabel.translatesAutoresizingMaskIntoConstraints = false
+        contentView.addSubview(nameLabel)
+    }
+    
+    private func setConstraints() {
+        NSLayoutConstraint.activate([coverImageView.leftAnchor.constraint(equalTo: contentView.leftAnchor), coverImageView.topAnchor.constraint(equalTo: contentView.topAnchor), coverImageView.heightAnchor.constraint(equalTo: contentView.heightAnchor), coverImageView.widthAnchor.constraint(lessThanOrEqualToConstant: 100), nameLabel.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 120)])
     }
 }
 
