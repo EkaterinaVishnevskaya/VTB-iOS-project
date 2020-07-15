@@ -8,6 +8,13 @@
 import UIKit
 
 final class BookCollectionViewCell: UICollectionViewCell{
+    
+    // MARK: - Constants
+    
+    enum Locals {
+        static let cellID = "cell"
+        static let height: CGFloat = 150
+    }
 
     // MARK: - Properties
     
@@ -26,19 +33,19 @@ final class BookCollectionViewCell: UICollectionViewCell{
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        nameLabel = UILabel(frame: .zero)
+        nameLabel = UILabel()
         nameLabel.textColor = .white
         nameLabel.backgroundColor = .black
         nameLabel.translatesAutoresizingMaskIntoConstraints = false
-        coverImageView = UIImageView(frame: .zero)
-        coverImageView.image = UIImage(contentsOfFile: "Book.png")
+        coverImageView = UIImageView()
+        coverImageView.image = UIImage(named: "Book")
         coverImageView.contentMode = .scaleAspectFit
         coverImageView.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(nameLabel)
         contentView.addSubview(coverImageView)
         contentView.layer.borderWidth = 1
         contentView.layer.borderColor = UIColor.white.cgColor
-        NSLayoutConstraint.activate([coverImageView.leftAnchor.constraint(equalTo: contentView.leftAnchor), coverImageView.topAnchor.constraint(equalTo: contentView.topAnchor), coverImageView.heightAnchor.constraint(equalTo: contentView.heightAnchor), nameLabel.leftAnchor.constraint(equalTo: coverImageView.leftAnchor, constant: 20)])
+        NSLayoutConstraint.activate([coverImageView.leftAnchor.constraint(equalTo: contentView.leftAnchor), coverImageView.topAnchor.constraint(equalTo: contentView.topAnchor), coverImageView.heightAnchor.constraint(equalTo: contentView.heightAnchor), coverImageView.widthAnchor.constraint(lessThanOrEqualToConstant: 100), nameLabel.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 120)])
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -49,6 +56,7 @@ final class BookCollectionViewCell: UICollectionViewCell{
     
     private func updateContent(viewModel: BookModel) {
         nameLabel.text = viewModel.name
+        coverImageView.image = viewModel.cover
     }
 }
 

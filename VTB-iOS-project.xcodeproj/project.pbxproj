@@ -17,7 +17,10 @@
 		F03879CA24A9F9D100938079 /* VTB_iOS_projectUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F03879C924A9F9D100938079 /* VTB_iOS_projectUITests.swift */; };
 		F0387A7F24B21C0D00938079 /* BookCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0387A7E24B21C0D00938079 /* BookCollectionViewCell.swift */; };
 		F0387A8124B21C7E00938079 /* BookModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0387A8024B21C7E00938079 /* BookModel.swift */; };
-		F0F87BAC24B704F700FBDBE5 /* Book.png in Resources */ = {isa = PBXBuildFile; fileRef = F0F87BAB24B704F700FBDBE5 /* Book.png */; };
+		F0F87C3724BCC72600FBDBE5 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F0F87C3524BCC72600FBDBE5 /* DataModel.xcdatamodeld */; };
+		F0F87C3924BE5DE400FBDBE5 /* TranslationAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F87C3824BE5DE400FBDBE5 /* TranslationAPIManager.swift */; };
+		F0F87C3B24BF2E3600FBDBE5 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F87C3A24BF2E3600FBDBE5 /* NetworkManager.swift */; };
+		F0F87C3D24BF31B900FBDBE5 /* JSONStructure.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F87C3C24BF31B900FBDBE5 /* JSONStructure.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,7 +57,10 @@
 		F03879CB24A9F9D100938079 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F0387A7E24B21C0D00938079 /* BookCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookCollectionViewCell.swift; sourceTree = "<group>"; };
 		F0387A8024B21C7E00938079 /* BookModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookModel.swift; sourceTree = "<group>"; };
-		F0F87BAB24B704F700FBDBE5 /* Book.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Book.png; sourceTree = "<group>"; };
+		F0F87C3624BCC72600FBDBE5 /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
+		F0F87C3824BE5DE400FBDBE5 /* TranslationAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationAPIManager.swift; sourceTree = "<group>"; };
+		F0F87C3A24BF2E3600FBDBE5 /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		F0F87C3C24BF31B900FBDBE5 /* JSONStructure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONStructure.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +111,8 @@
 		F03879A624A9F9CC00938079 /* VTB-iOS-project */ = {
 			isa = PBXGroup;
 			children = (
+				F0F87C3A24BF2E3600FBDBE5 /* NetworkManager.swift */,
+				F0F87C3E24BF34AC00FBDBE5 /* Translation */,
 				F0387A7D24B21BE600938079 /* CollectionCell */,
 				F03879A724A9F9CC00938079 /* AppDelegate.swift */,
 				F03879A924A9F9CC00938079 /* SceneDelegate.swift */,
@@ -113,6 +121,7 @@
 				F03879B024A9F9D000938079 /* Assets.xcassets */,
 				F03879B224A9F9D000938079 /* LaunchScreen.storyboard */,
 				F03879B524A9F9D000938079 /* Info.plist */,
+				F0F87C3524BCC72600FBDBE5 /* DataModel.xcdatamodeld */,
 			);
 			path = "VTB-iOS-project";
 			sourceTree = "<group>";
@@ -140,9 +149,17 @@
 			children = (
 				F0387A7E24B21C0D00938079 /* BookCollectionViewCell.swift */,
 				F0387A8024B21C7E00938079 /* BookModel.swift */,
-				F0F87BAB24B704F700FBDBE5 /* Book.png */,
 			);
 			path = CollectionCell;
+			sourceTree = "<group>";
+		};
+		F0F87C3E24BF34AC00FBDBE5 /* Translation */ = {
+			isa = PBXGroup;
+			children = (
+				F0F87C3C24BF31B900FBDBE5 /* JSONStructure.swift */,
+				F0F87C3824BE5DE400FBDBE5 /* TranslationAPIManager.swift */,
+			);
+			path = Translation;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -252,7 +269,6 @@
 				F03879B424A9F9D000938079 /* LaunchScreen.storyboard in Resources */,
 				F03879B124A9F9D000938079 /* Assets.xcassets in Resources */,
 				F03879AF24A9F9CC00938079 /* Main.storyboard in Resources */,
-				F0F87BAC24B704F700FBDBE5 /* Book.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -277,10 +293,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F0F87C3D24BF31B900FBDBE5 /* JSONStructure.swift in Sources */,
 				F0387A8124B21C7E00938079 /* BookModel.swift in Sources */,
 				F03879AC24A9F9CC00938079 /* LibraryViewController.swift in Sources */,
 				F03879A824A9F9CC00938079 /* AppDelegate.swift in Sources */,
+				F0F87C3724BCC72600FBDBE5 /* DataModel.xcdatamodeld in Sources */,
+				F0F87C3B24BF2E3600FBDBE5 /* NetworkManager.swift in Sources */,
 				F0387A7F24B21C0D00938079 /* BookCollectionViewCell.swift in Sources */,
+				F0F87C3924BE5DE400FBDBE5 /* TranslationAPIManager.swift in Sources */,
 				F03879AA24A9F9CC00938079 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -604,6 +624,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		F0F87C3524BCC72600FBDBE5 /* DataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				F0F87C3624BCC72600FBDBE5 /* DataModel.xcdatamodel */,
+			);
+			currentVersion = F0F87C3624BCC72600FBDBE5 /* DataModel.xcdatamodel */;
+			path = DataModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = F038799C24A9F9CC00938079 /* Project object */;
 }

@@ -14,14 +14,6 @@ protocol ViewControllerInput {
 
 class LibraryViewController: UIViewController {
     
-    // MARK: - Constants
-    
-    private enum Locals {
-        static let cellID = "cell"
-        static let height: CGFloat = 150
-    }
-    
-    
     // MARK: - Properties
 
     private var collectionView: UICollectionView!
@@ -58,7 +50,7 @@ class LibraryViewController: UIViewController {
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([collectionView.topAnchor.constraint(equalTo: safeArea.topAnchor), collectionView.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor), collectionView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor),collectionView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor)
         ])
-        collectionView.register(BookCollectionViewCell.self, forCellWithReuseIdentifier: Locals.cellID)
+        collectionView.register(BookCollectionViewCell.self, forCellWithReuseIdentifier: BookCollectionViewCell.Locals.cellID)
     }
 
     private func loadData() {
@@ -77,12 +69,11 @@ extension LibraryViewController: UICollectionViewDataSource, UICollectionViewDel
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Locals.cellID, for: indexPath) as? BookCollectionViewCell {
-            cell.viewModel = bookModels[indexPath.row]
-            return cell
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BookCollectionViewCell.Locals.cellID, for: indexPath) as? BookCollectionViewCell else {
+            fatalError()
         }
-        
-        return UICollectionViewCell()
+        cell.viewModel = bookModels[indexPath.row]
+        return cell
     }
     
 }
@@ -91,7 +82,7 @@ extension LibraryViewController: UICollectionViewDataSource, UICollectionViewDel
 extension LibraryViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: UIScreen.main.bounds.width, height: Locals.height)
+        return CGSize(width: UIScreen.main.bounds.width, height: BookCollectionViewCell.Locals.height)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
