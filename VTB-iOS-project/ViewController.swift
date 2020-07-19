@@ -16,8 +16,8 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         
-        let loginAssembly = LibraryAssembly.assembly()
-        navigationController?.present(loginAssembly, animated: true, completion: nil)
+        let libAssembly = LibraryAssembly.assembly()
+        navigationController?.present(libAssembly, animated: true, completion: nil)
     }
     
 

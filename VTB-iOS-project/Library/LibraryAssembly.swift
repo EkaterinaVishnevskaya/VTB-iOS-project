@@ -12,17 +12,17 @@ final class LibraryAssembly {
 
     static func assembly() -> UIViewController {
         
-        let view = LoginViewController()
-        let presenter = LoginPresenter(dataStore: dataStore)
+        let view = LibraryViewController()
+        let presenter = LibraryPresenter()
         
         view.presenter = presenter
         presenter.view = view
         
-        let interactor = LoginInteractor()
+        let interactor = LibraryInteractor()
         interactor.presenter = presenter
         presenter.interactor = interactor
         
-        let router = LoginRouter(view: view)
+        let router = LibraryRouter(view: view)
         presenter.router = router
         
         return view
