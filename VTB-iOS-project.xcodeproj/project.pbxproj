@@ -20,6 +20,8 @@
 		F0F87C4224C46B4C00FBDBE5 /* LibraryRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F87C4124C46B4C00FBDBE5 /* LibraryRouter.swift */; };
 		F0F87C4424C46BAF00FBDBE5 /* LibraryInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F87C4324C46BAF00FBDBE5 /* LibraryInteractor.swift */; };
 		F0F87C4624C46C2800FBDBE5 /* LibraryPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F87C4524C46C2800FBDBE5 /* LibraryPresenter.swift */; };
+		F0F87C4824C49A8400FBDBE5 /* LibraryAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F87C4724C49A8400FBDBE5 /* LibraryAssembly.swift */; };
+		F0F87C4A24C49B0F00FBDBE5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F87C4924C49B0F00FBDBE5 /* ViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +61,8 @@
 		F0F87C4124C46B4C00FBDBE5 /* LibraryRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryRouter.swift; sourceTree = "<group>"; };
 		F0F87C4324C46BAF00FBDBE5 /* LibraryInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryInteractor.swift; sourceTree = "<group>"; };
 		F0F87C4524C46C2800FBDBE5 /* LibraryPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryPresenter.swift; sourceTree = "<group>"; };
+		F0F87C4724C49A8400FBDBE5 /* LibraryAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryAssembly.swift; sourceTree = "<group>"; };
+		F0F87C4924C49B0F00FBDBE5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +116,7 @@
 				F03879A724A9F9CC00938079 /* AppDelegate.swift */,
 				F0F87C3F24C46AE200FBDBE5 /* Library */,
 				F03879A924A9F9CC00938079 /* SceneDelegate.swift */,
+				F0F87C4924C49B0F00FBDBE5 /* ViewController.swift */,
 				F03879AD24A9F9CC00938079 /* Main.storyboard */,
 				F03879B024A9F9D000938079 /* Assets.xcassets */,
 				F03879B224A9F9D000938079 /* LaunchScreen.storyboard */,
@@ -155,6 +160,7 @@
 				F0F87C4124C46B4C00FBDBE5 /* LibraryRouter.swift */,
 				F0F87C4324C46BAF00FBDBE5 /* LibraryInteractor.swift */,
 				F0F87C4524C46C2800FBDBE5 /* LibraryPresenter.swift */,
+				F0F87C4724C49A8400FBDBE5 /* LibraryAssembly.swift */,
 			);
 			path = Library;
 			sourceTree = "<group>";
@@ -290,10 +296,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F0F87C4A24C49B0F00FBDBE5 /* ViewController.swift in Sources */,
 				F0387A8124B21C7E00938079 /* BookModel.swift in Sources */,
 				F03879AC24A9F9CC00938079 /* LibraryViewController.swift in Sources */,
 				F03879A824A9F9CC00938079 /* AppDelegate.swift in Sources */,
 				F0F87C4424C46BAF00FBDBE5 /* LibraryInteractor.swift in Sources */,
+				F0F87C4824C49A8400FBDBE5 /* LibraryAssembly.swift in Sources */,
 				F0387A7F24B21C0D00938079 /* BookCollectionViewCell.swift in Sources */,
 				F0F87C4224C46B4C00FBDBE5 /* LibraryRouter.swift in Sources */,
 				F0F87C4624C46C2800FBDBE5 /* LibraryPresenter.swift in Sources */,
