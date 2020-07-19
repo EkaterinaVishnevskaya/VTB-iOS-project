@@ -8,8 +8,13 @@
 
 import UIKit
 
-protocol ViewControllerInput {
+protocol LibraryViewInput: AnyObject {
+    func updateView()
     func dataLoaded()
+}
+
+protocol LibraryViewOutput {
+    func viewIsReady()
 }
 
 class LibraryViewController: UIViewController {
@@ -23,6 +28,8 @@ class LibraryViewController: UIViewController {
     
     
     // MARK: - Properties
+    
+    var presenter: LibraryViewOutput?
 
     private var collectionView: UICollectionView!
     private var bookModels: [BookModel] = [] {
@@ -103,7 +110,11 @@ extension LibraryViewController: UICollectionViewDelegateFlowLayout {
     }
 }
 
-extension LibraryViewController: ViewControllerInput {
+// MARK: - LibraryViewInput
+extension LibraryViewController: LibraryViewInput {
+    func updateView() {
+        // Do something
+    }
     
     func dataLoaded() {
         // Do something
