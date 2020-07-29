@@ -8,10 +8,6 @@
 
 import UIKit
 
-protocol ViewControllerInput {
-    func dataLoaded()
-}
-
 class LibraryViewController: UIViewController {
     
     // MARK: - Properties
@@ -30,7 +26,6 @@ class LibraryViewController: UIViewController {
         super.viewDidLoad()
         setCollectionView()
         loadData()
-        
     }
     
     
@@ -67,7 +62,7 @@ class LibraryViewController: UIViewController {
 // MARK: - UICollectionViewDataSource & UICollectionViewDelegate
 
 extension LibraryViewController: UICollectionViewDataSource, UICollectionViewDelegate {
-    
+
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return bookModels.count
     }
@@ -95,12 +90,5 @@ extension LibraryViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-    }
-}
-
-extension LibraryViewController: ViewControllerInput {
-    
-    func dataLoaded() {
-        // Do something
     }
 }
