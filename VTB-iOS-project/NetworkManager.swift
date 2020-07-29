@@ -27,13 +27,8 @@ class NetworkManager: NSObject {
         guard let url = URL(string: urlString) else {
             return
         }
-
-        var request = URLRequest(url: url)
-        request.httpMethod = "POST"
-
-        let task = URLSession
         
-        let task = URLSession.shared.dataTask(with: url!, completionHandler: { data, response, error in
+        let task = URLSession.shared.dataTask(with: url, completionHandler: { data, response, error in
             
             if error != nil || data == nil {
                 print("Client error!")
