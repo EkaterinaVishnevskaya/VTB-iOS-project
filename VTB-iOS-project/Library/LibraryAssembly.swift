@@ -28,3 +28,5 @@ final class LibraryAssembly {
         return view
     }
 }
+
+// REVIEW: - Добавь .gitignore в проект

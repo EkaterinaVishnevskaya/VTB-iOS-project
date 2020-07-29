@@ -70,6 +70,13 @@ final class BookCollectionViewCell: UICollectionViewCell{
     }
     
     private func setConstraints() {
-        NSLayoutConstraint.activate([coverImageView.leftAnchor.constraint(equalTo: contentView.leftAnchor), coverImageView.topAnchor.constraint(equalTo: contentView.topAnchor), coverImageView.heightAnchor.constraint(equalTo: contentView.heightAnchor), coverImageView.widthAnchor.constraint(lessThanOrEqualToConstant: 100), nameLabel.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 120)])
+        // REVIEW: - По кодстайлу лучше переносить длинные строки на несколько строк
+        NSLayoutConstraint.activate([
+            coverImageView.leftAnchor.constraint(equalTo: contentView.leftAnchor),
+            coverImageView.topAnchor.constraint(equalTo: contentView.topAnchor),
+            coverImageView.heightAnchor.constraint(equalTo: contentView.heightAnchor),
+            coverImageView.widthAnchor.constraint(lessThanOrEqualToConstant: 100),
+            nameLabel.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 120)
+        ])
     }
 }
