@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BookModel {
+struct BookModel {
     
     var name: String
     var cover: UIImage
@@ -17,5 +17,4 @@ class BookModel {
         self.name = name
         self.cover = UIImage(named: "Book")!
     }
-    
 }
