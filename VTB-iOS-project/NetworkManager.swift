@@ -18,10 +18,20 @@ class NetworkManager: NSObject {
         static let  patch = "PATCH"
         static let delete = "DELETE"
     }
-    
-    func requestGet (urlString: String) -> Data? {
-        let url = URL(string: urlString)
-        var fileData: Data? = nil
+
+    enum MyError: Error {
+        case commonNetworkError
+    }
+
+    func requestGet (urlString: String, completion: @escaping (Result<Data?, MyError>) -> Void) {
+        guard let url = URL(string: urlString) else {
+            return
+        }
+
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+
+        let task = URLSession
         
         let task = URLSession.shared.dataTask(with: url!, completionHandler: { data, response, error in
             
@@ -36,19 +46,14 @@ class NetworkManager: NSObject {
             }
             
             if let data = data {
-                 DispatchQueue.main.async {
-                    fileData = data
-                }
-            } else
-            {
-               print ("Data Error")
+                completion(.success(data))
+            } else {
+                completion(.failure(.commonNetworkError))
                 return
             }
         })
         
         task.resume()
-        
-        return fileData
     }
     
     func requestPut (urlString: String, body: Data?) {
