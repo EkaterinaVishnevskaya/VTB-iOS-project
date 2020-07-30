@@ -26,7 +26,6 @@ class LibraryViewController: UIViewController {
         super.viewDidLoad()
         setCollectionView()
         loadData()
-        
     }
     
     
