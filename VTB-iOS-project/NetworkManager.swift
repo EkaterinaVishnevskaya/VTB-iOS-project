@@ -29,19 +29,19 @@ class NetworkManager: NSObject {
                 print("Client error!")
                 return
             }
-
+            
             guard let response = response as? HTTPURLResponse, (200...299).contains(response.statusCode) else {
                 print("Server error!")
                 return
             }
             
             if let data = data {
-                 DispatchQueue.main.async {
+                DispatchQueue.main.async {
                     fileData = data
                 }
             } else
             {
-               print ("Data Error")
+                print ("Data Error")
                 return
             }
         })
@@ -54,7 +54,7 @@ class NetworkManager: NSObject {
     func requestPut (urlString: String, body: Data?) {
         let session = URLSession.shared
         let url = URL(string: urlString)!
-
+        
         var request = URLRequest(url: url)
         request.httpMethod = HTTPMethod.put
         request.httpBody = body
@@ -69,7 +69,7 @@ class NetworkManager: NSObject {
                 print(httpResponse.statusCode)
             }
         }
-
+        
         task.resume()
     }
     

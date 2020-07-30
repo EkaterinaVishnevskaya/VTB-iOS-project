@@ -11,7 +11,7 @@ import UIKit
 class LibraryViewController: UIViewController {
     
     // MARK: - Properties
-
+    
     private var collectionView: UICollectionView!
     private var bookModels: [BookModel] = [] {
         didSet {
@@ -51,7 +51,7 @@ class LibraryViewController: UIViewController {
         ])
         collectionView.register(BookCollectionViewCell.self, forCellWithReuseIdentifier: BookCollectionViewCell.Locals.cellID)
     }
-
+    
     private func loadData() {
         
         bookModels = [BookModel(name: "one"), BookModel(name: "two"), BookModel(name: "three"), BookModel(name: "four"), BookModel(name: "five"), BookModel(name: "six"), BookModel(name: "seven"), BookModel(name: "eight"), BookModel(name: "nine"),BookModel(name: "ten"), BookModel(name: "un"), BookModel(name: "deux"),BookModel(name: "trois"), BookModel(name: "quatre"), BookModel(name: "cinq"),BookModel(name: "six"), BookModel(name: "sept"), BookModel(name: "huit"),BookModel(name: "neuf"), BookModel(name: "dix"), BookModel(name: "один"), BookModel(name: "два"),BookModel(name: "три"), BookModel(name: "четыре"), BookModel(name: "пять"),BookModel(name: "шесть"), BookModel(name: "семь"), BookModel(name: "восемь"),BookModel(name: "девять"), BookModel(name: "десять")]
@@ -62,7 +62,7 @@ class LibraryViewController: UIViewController {
 // MARK: - UICollectionViewDataSource & UICollectionViewDelegate
 
 extension LibraryViewController: UICollectionViewDataSource, UICollectionViewDelegate {
-
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return bookModels.count
     }

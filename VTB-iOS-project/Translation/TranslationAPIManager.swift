@@ -25,7 +25,7 @@ class TranslationAPIManager {
             let jsonResult = try! JSONDecoder().decode(JSONStructure.self, from: data)
             translation = jsonResult.translate[0].translatedText
         } catch {
-             print("JSON Error")
+            print("JSON Error")
         }
         return translation
     }
