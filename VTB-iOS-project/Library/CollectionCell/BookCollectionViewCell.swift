@@ -15,7 +15,7 @@ final class BookCollectionViewCell: UICollectionViewCell{
         static let cellID = "bookcell"
         static let height: CGFloat = 150
     }
-
+    
     // MARK: - Properties
     
     private var nameLabel: UILabel!
@@ -25,7 +25,7 @@ final class BookCollectionViewCell: UICollectionViewCell{
     var viewModel: BookModel? {
         didSet {
             guard let viewModel = viewModel else {
-               return
+                return
             }
             updateContent(viewModel: viewModel)
         }

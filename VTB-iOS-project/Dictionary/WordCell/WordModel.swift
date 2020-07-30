@@ -11,11 +11,4 @@ import UIKit
 struct WordModel{
     let word: String 
     let translation: String
-    
-    init(word: String, translation: String) {
-        self.word = word
-        self.translation = translation
-    }
-    
-    
 }

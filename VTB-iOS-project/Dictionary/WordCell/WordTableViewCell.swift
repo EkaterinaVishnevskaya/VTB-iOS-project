@@ -20,13 +20,14 @@ class WordTableViewCell: UITableViewCell {
     
     // MARK: - Properties
     
-    var wordLabel: UILabel!
-    var translationLabel: UILabel!
+    private var wordLabel: UILabel!
+    private var translationLabel: UILabel!
     var viewModel: WordModel? {
         didSet {
-            if let viewModel = viewModel {
-                updateContent(with: viewModel)
+            guard let viewModel = viewModel else {
+                return
             }
+            updateContent(viewModel)
         }
     }
     
@@ -46,7 +47,7 @@ class WordTableViewCell: UITableViewCell {
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
     
@@ -83,7 +84,7 @@ class WordTableViewCell: UITableViewCell {
     }
     // MARK: - Private
     
-    private func updateContent(with viewModel: WordModel) {
+    private func updateContent(_ viewModel: WordModel) {
         wordLabel.text = viewModel.word
         translationLabel.text = viewModel.translation
     }

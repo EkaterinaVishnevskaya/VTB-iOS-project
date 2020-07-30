@@ -12,9 +12,9 @@ import Foundation
 class DictinaryViewController: UIViewController {
     
     // MARK: - Properties
-
-    var tableView: UITableView!
-    let searchController  = UISearchController(searchResultsController: nil)
+    
+    private var tableView: UITableView!
+    private let searchController  = UISearchController(searchResultsController: nil)
     private var wordModels: [WordModel] = [] {
         didSet {
             tableView.reloadData()
@@ -25,7 +25,7 @@ class DictinaryViewController: UIViewController {
             tableView.reloadData()
         }
     }
-
+    
     // MARK: - Lifecycle
     
     override func viewDidLoad() {
@@ -44,7 +44,7 @@ class DictinaryViewController: UIViewController {
         tableView.dataSource = self
         tableView.register(WordTableViewCell.self, forCellReuseIdentifier: WordTableViewCell.Locals.cellID)
     }
-
+    
     private func loadData() {
         wordModels = [WordModel(word: "one", translation: "один\nодин\nодин\nодин\nодин"), WordModel(word: "two", translation: "два"), WordModel(word: "three", translation: "три"), WordModel(word: "four", translation: "четыре"), WordModel(word: "five", translation: "пять"), WordModel(word: "six", translation: "шесть"), WordModel(word: "seven", translation: "семь"), WordModel(word: "eight", translation: "восемь"), WordModel(word: "nine", translation: "девять"), WordModel(word: "ten", translation: "десять")]
     }
@@ -113,8 +113,7 @@ extension DictinaryViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if isFiltering {
             return filtredWordModels.count
-        } else
-        {
+        } else {
             return wordModels.count
         }
     }
@@ -131,7 +130,7 @@ extension DictinaryViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return WordTableViewCell.Locals.cellHeight
-        }
+    }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //TODO
@@ -147,16 +146,16 @@ extension DictinaryViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            if isFiltering {
-                wordModels.remove(at: wordModels.firstIndex(where: {wordmodel in
-                    return wordmodel.word==filtredWordModels[indexPath.row].word
-                }) ?? -1)
-                filtredWordModels.remove(at: indexPath.row)
-            } else
-            {
-                wordModels.remove(at: indexPath.row)
-            }
+        guard editingStyle == .delete else {
+            return
+        }
+        if isFiltering {
+            wordModels.remove(at: wordModels.firstIndex(where: {wordmodel in
+                return wordmodel.word==filtredWordModels[indexPath.row].word
+            }) ?? -1)
+            filtredWordModels.remove(at: indexPath.row)
+        } else {
+            wordModels.remove(at: indexPath.row)
         }
     }
 }
@@ -166,11 +165,11 @@ extension DictinaryViewController: UITableViewDelegate, UITableViewDataSource {
 extension DictinaryViewController: UISearchControllerDelegate {
     
     var isSearchBarEmpty: Bool {
-      return searchController.searchBar.text?.isEmpty ?? true
+        return searchController.searchBar.text?.isEmpty ?? true
     }
     
     var isFiltering: Bool {
-      return searchController.isActive && !isSearchBarEmpty
+        return searchController.isActive && !isSearchBarEmpty
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
@@ -186,7 +185,7 @@ extension DictinaryViewController: UISearchResultsUpdating {
         filtredWordModels = wordModels.filter(){wordmodel in
             return wordmodel.word.lowercased().contains(searchText.lowercased()) || wordmodel.translation.lowercased().contains(searchText.lowercased())
         }
-      tableView.reloadData()
+        tableView.reloadData()
     }
     
     func updateSearchResults(for searchController: UISearchController) {
