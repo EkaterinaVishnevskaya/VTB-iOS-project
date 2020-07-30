@@ -56,7 +56,7 @@ class WordTableViewCell: UITableViewCell {
         wordLabel.textColor = .white
         wordLabel.backgroundColor = .black
         wordLabel.lineBreakMode = .byWordWrapping
-        wordLabel.font = UIFont.boldSystemFont(ofSize: 16.0)
+        wordLabel.font = UIFont.boldSystemFont(ofSize: 18.0)
         wordLabel.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(wordLabel)
     }
