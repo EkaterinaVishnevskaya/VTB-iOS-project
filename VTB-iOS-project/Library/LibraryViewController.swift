@@ -62,7 +62,7 @@ class LibraryViewController: UIViewController {
 // MARK: - UICollectionViewDataSource & UICollectionViewDelegate
 
 extension LibraryViewController: UICollectionViewDataSource, UICollectionViewDelegate {
-    
+
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return bookModels.count
     }
