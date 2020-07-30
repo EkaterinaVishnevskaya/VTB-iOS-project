@@ -12,7 +12,7 @@ final class BookCollectionViewCell: UICollectionViewCell{
     // MARK: - Constants
     
     enum Locals {
-        static let cellID = "cell"
+        static let cellID = "bookcell"
         static let height: CGFloat = 150
     }
 
