@@ -117,13 +117,12 @@
 		F03879A624A9F9CC00938079 /* VTB-iOS-project */ = {
 			isa = PBXGroup;
 			children = (
+				F0BF107C24D307C000AE61BB /* Library */,
 				F0F87C3A24BF2E3600FBDBE5 /* NetworkManager.swift */,
 				F0BF106524D2176E00AE61BB /* Dictionary */,
 				F0F87C3E24BF34AC00FBDBE5 /* Translation */,
-				F0387A7D24B21BE600938079 /* CollectionCell */,
 				F03879A724A9F9CC00938079 /* AppDelegate.swift */,
 				F03879A924A9F9CC00938079 /* SceneDelegate.swift */,
-				F03879AB24A9F9CC00938079 /* LibraryViewController.swift */,
 				F03879AD24A9F9CC00938079 /* Main.storyboard */,
 				F03879B024A9F9D000938079 /* Assets.xcassets */,
 				F03879B224A9F9D000938079 /* LaunchScreen.storyboard */,
@@ -176,6 +175,15 @@
 				F0BF106424D2174600AE61BB /* WordCell */,
 			);
 			name = Dictionary;
+			sourceTree = "<group>";
+		};
+		F0BF107C24D307C000AE61BB /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				F0387A7D24B21BE600938079 /* CollectionCell */,
+				F03879AB24A9F9CC00938079 /* LibraryViewController.swift */,
+			);
+			path = Library;
 			sourceTree = "<group>";
 		};
 		F0F87C3E24BF34AC00FBDBE5 /* Translation */ = {
