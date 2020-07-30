@@ -18,11 +18,11 @@ class NetworkManager: NSObject {
         static let  patch = "POST"
     }
     
-    enum MyError: Error {
+    enum NetworkErrors: Error {
         case commonNetworkError
     }
     
-    func requestGet (urlString: String, completion: @escaping (Result<Data?, MyError>) -> Void) {
+    func requestGet (urlString: String, completion: @escaping (Result<Data?, NetworkErrors>) -> Void) {
        guard let url = URL(string: urlString) else {
             return
         }
@@ -49,7 +49,7 @@ class NetworkManager: NSObject {
         task.resume()
     }
     
-    func requestPut (urlString: String, body: Data?, completion: @escaping (Result<Data?, MyError>) -> Void) {
+    func requestPut (urlString: String, body: Data?, completion: @escaping (Result<Data?, NetworkErrors>) -> Void) {
         let session = URLSession.shared
         let url = URL(string: urlString)!
 
@@ -77,7 +77,7 @@ class NetworkManager: NSObject {
         task.resume()
     }
     
-    func requestPost (urlString: String, completion: @escaping (Result<Data?, MyError>) -> Void) {
+    func requestPost (urlString: String, completion: @escaping (Result<Data?, NetworkErrors>) -> Void) {
        guard let url = URL(string: urlString) else {
             return
         }
