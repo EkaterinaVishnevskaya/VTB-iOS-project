@@ -5,6 +5,7 @@
 //  Created by Екатерина Вишневская - ВТБ on 05.07.2020.
 //  Copyright © 2020 Екатерина Вишневская - ВТБ. All rights reserved.
 //
+
 import UIKit
 
 final class BookCollectionViewCell: UICollectionViewCell {
@@ -15,7 +16,7 @@ final class BookCollectionViewCell: UICollectionViewCell {
         static let cellID = "bookcell"
         static let height: CGFloat = 150
     }
-    
+
     // MARK: - Properties
     
     private var nameLabel: UILabel!
