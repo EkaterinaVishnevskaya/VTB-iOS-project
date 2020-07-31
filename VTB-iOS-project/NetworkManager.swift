@@ -15,15 +15,19 @@ class NetworkManager: NSObject {
     enum HTTPMethod {
         static let put = "PUT"
         static let get = "GET"
-        static let  patch = "PATCH"
-        static let delete = "DELETE"
+        static let  patch = "POST"
     }
     
-    func requestGet (urlString: String) -> Data? {
-        let url = URL(string: urlString)
-        var fileData: Data? = nil
+    enum NetworkErrors: Error {
+        case commonNetworkError
+    }
+    
+    func requestGet (urlString: String, completion: @escaping (Result<Data?, NetworkErrors>) -> Void) {
+       guard let url = URL(string: urlString) else {
+            return
+        }
         
-        let task = URLSession.shared.dataTask(with: url!, completionHandler: { data, response, error in
+        let task = URLSession.shared.dataTask(with: url, completionHandler: { data, response, error in
             
             if error != nil || data == nil {
                 print("Client error!")
@@ -35,23 +39,17 @@ class NetworkManager: NSObject {
                 return
             }
             
-            if let data = data {
-                 DispatchQueue.main.async {
-                    fileData = data
-                }
-            } else
-            {
-               print ("Data Error")
-                return
+            if let data = data {completion(.success(data))
+                } else {
+                    completion(.failure(.commonNetworkError))
+                    return
             }
         })
         
         task.resume()
-        
-        return fileData
     }
     
-    func requestPut (urlString: String, body: Data?) {
+    func requestPut (urlString: String, body: Data?, completion: @escaping (Result<Data?, NetworkErrors>) -> Void) {
         let session = URLSession.shared
         let url = URL(string: urlString)!
 
@@ -68,12 +66,45 @@ class NetworkManager: NSObject {
             if let httpResponse = response as? HTTPURLResponse {
                 print(httpResponse.statusCode)
             }
+        
+            if let data = data {completion(.success(data))
+                }   else {
+                completion(.failure(.commonNetworkError))
+                return
+        }
         }
 
         task.resume()
     }
     
-    
+    func requestPost (urlString: String, completion: @escaping (Result<Data?, NetworkErrors>) -> Void) {
+       guard let url = URL(string: urlString) else {
+            return
+        }
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        
+        let task = URLSession.shared.dataTask(with: request, completionHandler: { data, response, error in
+            
+            if error != nil || data == nil {
+                print("Client error!")
+                return
+            }
+
+            guard let response = response as? HTTPURLResponse, (200...299).contains(response.statusCode) else {
+                print("Server error!")
+                return
+            }
+            
+            if let data = data {completion(.success(data))
+                } else {
+                    completion(.failure(.commonNetworkError))
+                    return
+            }
+        })
+        
+        task.resume()
+    }
     
 }
 
