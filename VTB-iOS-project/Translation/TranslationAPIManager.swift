@@ -18,7 +18,7 @@ class TranslationAPIManager {
     func translateFromEngToRus(word: String, completion: ((String?) -> Void)?) {
         
         let url = "https://translation.googleapis.com/language/translate/v2?q=\(word)&sourse=EN&target=RU&key=\(Constants.APIKey)"
-        NetworkManager.networkManager.requestGet(urlString: url) { result in
+        NetworkManager.networkManager.requestPost(urlString: url) { result in
             switch result {
             case .success(let data):
                 guard let data = data else {
@@ -27,14 +27,17 @@ class TranslationAPIManager {
                 do{
                     let jsonResult = try JSONDecoder().decode(JSONStructure.self, from: data)
                     var translation = ""
-                    for i in 0 ..< jsonResult.translate.count {
-                        translation += "\(i+1). \(jsonResult.translate[i].translatedText)\n"
+                    for i in 0 ..< jsonResult.data.translations.count {
+                        translation += "\(i+1). \(jsonResult.data.translations[i].translatedText)\n"
                     }
+                    print("Translation: \(word) -> \(translation)")
                     completion?(translation)
                 } catch {
+                    print ("JSON Error")
                     completion?(nil)
                 }
             case .failure:
+                print ("Network Error")
                 completion?(nil)
             }
         }

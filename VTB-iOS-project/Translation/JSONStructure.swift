@@ -14,6 +14,10 @@ struct TranslateTextResponseTranslation: Codable {
     let translatedText: String
 }
 
+struct JSONData: Codable {
+    let translations: [TranslateTextResponseTranslation]
+}
+
 struct JSONStructure: Codable {
-    let translate: [TranslateTextResponseTranslation]
+    let data: JSONData
 }

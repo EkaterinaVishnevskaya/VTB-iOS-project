@@ -14,8 +14,9 @@ class TabBarController: UITabBarController {
         super.viewDidLoad()
         
         delegate = self
-        tabBar.tintColor = UIColor.white
+        
         tabBar.barTintColor = UIColor.gray
+        tabBar.tintColor = UIColor.white
         tabBar.unselectedItemTintColor = UIColor.black
         
         let item1 = LibraryViewController()
