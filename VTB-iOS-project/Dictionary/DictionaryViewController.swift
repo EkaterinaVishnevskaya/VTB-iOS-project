@@ -9,7 +9,7 @@
 import UIKit
 import Foundation
 
-class DictinaryViewController: UIViewController {
+class DictionaryViewController: UIViewController {
     
     // MARK: - Properties
     
@@ -109,7 +109,7 @@ class DictinaryViewController: UIViewController {
 }
 
 // MARK: - UITableViewDelegate & UITableViewDataSource
-extension DictinaryViewController: UITableViewDelegate, UITableViewDataSource {
+extension DictionaryViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if isFiltering {
             return filtredWordModels.count
@@ -162,7 +162,7 @@ extension DictinaryViewController: UITableViewDelegate, UITableViewDataSource {
 
 // MARK: - UISearchControllerDelegate&UISearchResultsUpdating
 
-extension DictinaryViewController: UISearchControllerDelegate {
+extension DictionaryViewController: UISearchControllerDelegate {
     
     var isSearchBarEmpty: Bool {
         return searchController.searchBar.text?.isEmpty ?? true
@@ -179,7 +179,7 @@ extension DictinaryViewController: UISearchControllerDelegate {
     }
 }
 
-extension DictinaryViewController: UISearchResultsUpdating {
+extension DictionaryViewController: UISearchResultsUpdating {
     
     func filterContentForSearchText(_ searchText: String) {
         filtredWordModels = wordModels.filter(){wordmodel in

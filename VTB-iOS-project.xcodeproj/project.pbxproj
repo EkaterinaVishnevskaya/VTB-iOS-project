@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F034461924D40D5200CF1006 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F034461824D40D5200CF1006 /* TabBarViewController.swift */; };
 		F03879A824A9F9CC00938079 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F03879A724A9F9CC00938079 /* AppDelegate.swift */; };
 		F03879AA24A9F9CC00938079 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F03879A924A9F9CC00938079 /* SceneDelegate.swift */; };
 		F03879AF24A9F9CC00938079 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F03879AD24A9F9CC00938079 /* Main.storyboard */; };
@@ -14,7 +15,7 @@
 		F03879B424A9F9D000938079 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F03879B224A9F9D000938079 /* LaunchScreen.storyboard */; };
 		F03879BF24A9F9D100938079 /* VTB_iOS_projectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F03879BE24A9F9D100938079 /* VTB_iOS_projectTests.swift */; };
 		F03879CA24A9F9D100938079 /* VTB_iOS_projectUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F03879C924A9F9D100938079 /* VTB_iOS_projectUITests.swift */; };
-    F0BF106724D217C700AE61BB /* DictionaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0BF106624D217C700AE61BB /* DictionaryViewController.swift */; };
+		F0BF106724D217C700AE61BB /* DictionaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0BF106624D217C700AE61BB /* DictionaryViewController.swift */; };
 		F0BF106A24D217D300AE61BB /* WordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0BF106824D217D300AE61BB /* WordModel.swift */; };
 		F0BF106B24D217D300AE61BB /* WordTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0BF106924D217D300AE61BB /* WordTableViewCell.swift */; };
 		F0BF107524D21AFC00AE61BB /* LibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0BF107424D21AFC00AE61BB /* LibraryViewController.swift */; };
@@ -44,6 +45,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F034461824D40D5200CF1006 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		F03879A424A9F9CC00938079 /* VTB-iOS-project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "VTB-iOS-project.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F03879A724A9F9CC00938079 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F03879A924A9F9CC00938079 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -117,6 +119,7 @@
 		F03879A624A9F9CC00938079 /* VTB-iOS-project */ = {
 			isa = PBXGroup;
 			children = (
+				F034461824D40D5200CF1006 /* TabBarViewController.swift */,
 				F0BF107324D21AEC00AE61BB /* Library */,
 				F0F87C3A24BF2E3600FBDBE5 /* NetworkManager.swift */,
 				F0BF106524D2176E00AE61BB /* Dictionary */,
@@ -150,24 +153,6 @@
 			path = "VTB-iOS-projectUITests";
 			sourceTree = "<group>";
 		};
-		F0BF107324D21AEC00AE61BB /* Library */ = {
-			isa = PBXGroup;
-			children = (
-				F0BF107724D21B2600AE61BB /* BookCell */,
-				F0BF107424D21AFC00AE61BB /* LibraryViewController.swift */,
-			);
-			name = Library;
-			sourceTree = "<group>";
-		};
-		F0BF107724D21B2600AE61BB /* BookCell */ = {
-			isa = PBXGroup;
-			children = (
-				F0BF107824D21B3800AE61BB /* BookCollectionViewCell.swift */,
-				F0BF107924D21B3800AE61BB /* BookModel.swift */,
-			);
-			name = BookCell;
-			sourceTree = "<group>";
-		};
 		F0BF106424D2174600AE61BB /* WordCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -186,13 +171,22 @@
 			name = Dictionary;
 			sourceTree = "<group>";
 		};
-		F0BF107C24D307C000AE61BB /* Library */ = {
+		F0BF107324D21AEC00AE61BB /* Library */ = {
 			isa = PBXGroup;
 			children = (
-				F0387A7D24B21BE600938079 /* CollectionCell */,
-				F03879AB24A9F9CC00938079 /* LibraryViewController.swift */,
+				F0BF107724D21B2600AE61BB /* BookCell */,
+				F0BF107424D21AFC00AE61BB /* LibraryViewController.swift */,
 			);
-			path = Library;
+			name = Library;
+			sourceTree = "<group>";
+		};
+		F0BF107724D21B2600AE61BB /* BookCell */ = {
+			isa = PBXGroup;
+			children = (
+				F0BF107824D21B3800AE61BB /* BookCollectionViewCell.swift */,
+				F0BF107924D21B3800AE61BB /* BookModel.swift */,
+			);
+			name = BookCell;
 			sourceTree = "<group>";
 		};
 		F0F87C3E24BF34AC00FBDBE5 /* Translation */ = {
@@ -345,6 +339,7 @@
 				F0F87C3724BCC72600FBDBE5 /* DataModel.xcdatamodeld in Sources */,
 				F0F87C3B24BF2E3600FBDBE5 /* NetworkManager.swift in Sources */,
 				F0BF107524D21AFC00AE61BB /* LibraryViewController.swift in Sources */,
+				F034461924D40D5200CF1006 /* TabBarViewController.swift in Sources */,
 				F0F87C3924BE5DE400FBDBE5 /* TranslationAPIManager.swift in Sources */,
 				F03879AA24A9F9CC00938079 /* SceneDelegate.swift in Sources */,
 			);
