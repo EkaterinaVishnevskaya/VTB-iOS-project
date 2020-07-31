@@ -33,7 +33,7 @@ class NetworkManager: NSObject {
                 print("Client error!")
                 return
             }
-
+            
             guard let response = response as? HTTPURLResponse, (200...299).contains(response.statusCode) else {
                 print("Server error!")
                 return
@@ -52,7 +52,7 @@ class NetworkManager: NSObject {
     func requestPut (urlString: String, body: Data?, completion: @escaping (Result<Data?, NetworkErrors>) -> Void) {
         let session = URLSession.shared
         let url = URL(string: urlString)!
-
+        
         var request = URLRequest(url: url)
         request.httpMethod = HTTPMethod.put
         request.httpBody = body
@@ -73,7 +73,7 @@ class NetworkManager: NSObject {
                 return
         }
         }
-
+        
         task.resume()
     }
     

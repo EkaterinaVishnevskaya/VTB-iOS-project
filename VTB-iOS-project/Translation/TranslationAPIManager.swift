@@ -37,7 +37,6 @@ class TranslationAPIManager {
             case .failure:
                 completion?(nil)
             }
-            
         }
     }
 }

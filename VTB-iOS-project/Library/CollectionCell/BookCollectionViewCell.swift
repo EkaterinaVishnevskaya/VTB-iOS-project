@@ -5,9 +5,10 @@
 //  Created by Екатерина Вишневская - ВТБ on 05.07.2020.
 //  Copyright © 2020 Екатерина Вишневская - ВТБ. All rights reserved.
 //
+
 import UIKit
 
-final class BookCollectionViewCell: UICollectionViewCell{
+final class BookCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Constants
     
@@ -25,7 +26,7 @@ final class BookCollectionViewCell: UICollectionViewCell{
     var viewModel: BookModel? {
         didSet {
             guard let viewModel = viewModel else {
-               return
+                return
             }
             updateContent(viewModel: viewModel)
         }
