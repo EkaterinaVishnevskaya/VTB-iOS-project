@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		F034461924D40D5200CF1006 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F034461824D40D5200CF1006 /* TabBarViewController.swift */; };
+		F034461B24D5BD6700CF1006 /* WordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F034461A24D5BD6600CF1006 /* WordViewController.swift */; };
 		F03879A824A9F9CC00938079 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F03879A724A9F9CC00938079 /* AppDelegate.swift */; };
 		F03879AA24A9F9CC00938079 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F03879A924A9F9CC00938079 /* SceneDelegate.swift */; };
 		F03879AF24A9F9CC00938079 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F03879AD24A9F9CC00938079 /* Main.storyboard */; };
@@ -46,6 +47,7 @@
 
 /* Begin PBXFileReference section */
 		F034461824D40D5200CF1006 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		F034461A24D5BD6600CF1006 /* WordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordViewController.swift; sourceTree = "<group>"; };
 		F03879A424A9F9CC00938079 /* VTB-iOS-project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "VTB-iOS-project.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F03879A724A9F9CC00938079 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F03879A924A9F9CC00938079 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -166,6 +168,7 @@
 			isa = PBXGroup;
 			children = (
 				F0BF106624D217C700AE61BB /* DictionaryViewController.swift */,
+				F034461A24D5BD6600CF1006 /* WordViewController.swift */,
 				F0BF106424D2174600AE61BB /* WordCell */,
 			);
 			name = Dictionary;
@@ -331,6 +334,7 @@
 			files = (
 				F0BF106A24D217D300AE61BB /* WordModel.swift in Sources */,
 				F0BF106B24D217D300AE61BB /* WordTableViewCell.swift in Sources */,
+				F034461B24D5BD6700CF1006 /* WordViewController.swift in Sources */,
 				F0BF106724D217C700AE61BB /* DictionaryViewController.swift in Sources */,
 				F0F87C3D24BF31B900FBDBE5 /* JSONStructure.swift in Sources */,
 				F0BF107A24D21B3800AE61BB /* BookCollectionViewCell.swift in Sources */,
