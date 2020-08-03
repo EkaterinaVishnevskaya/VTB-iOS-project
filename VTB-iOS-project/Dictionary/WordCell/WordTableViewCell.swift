@@ -15,7 +15,7 @@ class WordTableViewCell: UITableViewCell {
     
     enum Locals {
         static let cellID = "wordcell"
-        static let cellHeight: CGFloat = 100
+        static let maxCellHeight: CGFloat = 100
     }
     
     // MARK: - Properties
@@ -67,7 +67,7 @@ class WordTableViewCell: UITableViewCell {
         translationLabel.textColor = .white
         translationLabel.backgroundColor = .black
         translationLabel.lineBreakMode = .byWordWrapping
-        translationLabel.numberOfLines = 3
+        translationLabel.numberOfLines = 0
         translationLabel.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(translationLabel)
     }
@@ -80,6 +80,8 @@ class WordTableViewCell: UITableViewCell {
             translationLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 5),
             translationLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -5),
             translationLabel.topAnchor.constraint(equalTo: wordLabel.bottomAnchor, constant: 5),
+            translationLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -5),
+            contentView.heightAnchor.constraint(lessThanOrEqualToConstant: Locals.maxCellHeight)
         ])
     }
     // MARK: - Private

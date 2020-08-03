@@ -25,10 +25,11 @@ class TranslationAPIManager {
                     return
                 }
                 do{
-                    let jsonResult = try JSONDecoder().decode(JSONStructure.self, from: data)
-                    var translation = ""
-                    for i in 0 ..< jsonResult.data.translations.count {
-                        translation += "\(i+1). \(jsonResult.data.translations[i].translatedText)\n"
+                    let jsonResult = try JSONDecoder().decode(TranslationResponse.self, from: data)
+                    let traslationCount = jsonResult.data.translations.count
+                    var translation = traslationCount==1 ?  jsonResult.data.translations[0].translatedText : "1. \( jsonResult.data.translations[0].translatedText)"
+                    for i in 1 ..< traslationCount {
+                        translation += "\n\(i+1). \(jsonResult.data.translations[i].translatedText)"
                     }
                     print("Translation: \(word) -> \(translation)")
                     completion?(translation)

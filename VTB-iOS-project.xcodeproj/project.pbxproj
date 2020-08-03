@@ -25,7 +25,7 @@
 		F0F87C3724BCC72600FBDBE5 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F0F87C3524BCC72600FBDBE5 /* DataModel.xcdatamodeld */; };
 		F0F87C3924BE5DE400FBDBE5 /* TranslationAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F87C3824BE5DE400FBDBE5 /* TranslationAPIManager.swift */; };
 		F0F87C3B24BF2E3600FBDBE5 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F87C3A24BF2E3600FBDBE5 /* NetworkManager.swift */; };
-		F0F87C3D24BF31B900FBDBE5 /* JSONStructure.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F87C3C24BF31B900FBDBE5 /* JSONStructure.swift */; };
+		F0F87C3D24BF31B900FBDBE5 /* TranslationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F87C3C24BF31B900FBDBE5 /* TranslationResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,7 +70,7 @@
 		F0F87C3624BCC72600FBDBE5 /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
 		F0F87C3824BE5DE400FBDBE5 /* TranslationAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationAPIManager.swift; sourceTree = "<group>"; };
 		F0F87C3A24BF2E3600FBDBE5 /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
-		F0F87C3C24BF31B900FBDBE5 /* JSONStructure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONStructure.swift; sourceTree = "<group>"; };
+		F0F87C3C24BF31B900FBDBE5 /* TranslationResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -195,7 +195,7 @@
 		F0F87C3E24BF34AC00FBDBE5 /* Translation */ = {
 			isa = PBXGroup;
 			children = (
-				F0F87C3C24BF31B900FBDBE5 /* JSONStructure.swift */,
+				F0F87C3C24BF31B900FBDBE5 /* TranslationResponse.swift */,
 				F0F87C3824BE5DE400FBDBE5 /* TranslationAPIManager.swift */,
 			);
 			path = Translation;
@@ -336,7 +336,7 @@
 				F0BF106B24D217D300AE61BB /* WordTableViewCell.swift in Sources */,
 				F034461B24D5BD6700CF1006 /* WordViewController.swift in Sources */,
 				F0BF106724D217C700AE61BB /* DictionaryViewController.swift in Sources */,
-				F0F87C3D24BF31B900FBDBE5 /* JSONStructure.swift in Sources */,
+				F0F87C3D24BF31B900FBDBE5 /* TranslationResponse.swift in Sources */,
 				F0BF107A24D21B3800AE61BB /* BookCollectionViewCell.swift in Sources */,
 				F03879A824A9F9CC00938079 /* AppDelegate.swift in Sources */,
 				F0BF107B24D21B3800AE61BB /* BookModel.swift in Sources */,

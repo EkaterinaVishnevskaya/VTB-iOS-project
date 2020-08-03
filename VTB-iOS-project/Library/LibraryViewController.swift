@@ -29,6 +29,11 @@ class LibraryViewController: UIViewController {
     }
     
     
+    override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.willTransition(to: newCollection, with: coordinator)
+        collectionView.collectionViewLayout.invalidateLayout()
+    }
+    
     // MARK: - Configurations
     
     private func setCollectionView() {

@@ -36,6 +36,10 @@ class DictionaryViewController: UIViewController {
         loadData()
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        searchController.isActive = false
+    }
     
     // MARK: - Configurations
     
@@ -59,7 +63,7 @@ class DictionaryViewController: UIViewController {
         view.addSubview(tableView)
         NSLayoutConstraint.activate([
             headerView.topAnchor.constraint(equalTo: safeArea.topAnchor),
-            headerView.heightAnchor.constraint(equalToConstant: 150),
+            headerView.heightAnchor.constraint(equalToConstant: 100),
             headerView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor),
             headerView.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor),
             tableView.topAnchor.constraint(equalTo: headerView.bottomAnchor),
@@ -71,26 +75,23 @@ class DictionaryViewController: UIViewController {
     
     private func setHeaderView() -> UIView {
         let headerView = UIView()
+        headerView.translatesAutoresizingMaskIntoConstraints = false
         
         searchController.searchResultsUpdater = self
-        searchController.obscuresBackgroundDuringPresentation = false
         searchController.delegate = self
-        headerView.translatesAutoresizingMaskIntoConstraints = false
+        searchController.obscuresBackgroundDuringPresentation = false
+       
         let searchBar = searchController.searchBar
+        searchBar.translatesAutoresizingMaskIntoConstraints = false
         searchBar.placeholder = "search"
         searchBar.barTintColor = .gray
-        // searchBar.scopeBarButtonTitleTextAttributes(for: .normal)
+        searchBar.tintColor = .white
         if let textfield = searchBar.value(forKey: "searchField") as? UITextField {
             textfield.textColor = .white
             textfield.layer.cornerRadius = 10
             textfield.clipsToBounds = true
             textfield.layer.borderWidth = 0.5
             textfield.layer.borderColor = UIColor.black.cgColor
-        }
-        if let cancelButton = searchBar.value(forKey: "cancelButton") as?  UIButton {
-            cancelButton.setTitleColor(.white, for: .normal)
-            cancelButton.setTitleColor(.lightGray, for: .selected)
-            
         }
         headerView.addSubview(searchBar)
         
@@ -102,7 +103,11 @@ class DictionaryViewController: UIViewController {
         headerView.addSubview(headerLabel)
         
         NSLayoutConstraint.activate([
-            headerLabel.leadingAnchor.constraint(equalTo: headerView.leadingAnchor, constant: 10)
+            headerLabel.leadingAnchor.constraint(equalTo: headerView.leadingAnchor, constant: 10),
+            headerLabel.topAnchor.constraint(equalTo: headerView.topAnchor, constant: 10),
+            searchBar.leadingAnchor.constraint(equalTo: headerView.leadingAnchor),
+            searchBar.trailingAnchor.constraint(equalTo: headerView.trailingAnchor),
+            searchBar.bottomAnchor.constraint(equalTo: headerView.bottomAnchor)
         ])
         return headerView
     }
@@ -129,7 +134,11 @@ extension DictionaryViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return WordTableViewCell.Locals.cellHeight
+        return UITableView.automaticDimension
+    }
+
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -145,19 +154,23 @@ extension DictionaryViewController: UITableViewDelegate, UITableViewDataSource {
         return true
     }
     
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        guard editingStyle == .delete else {
-            return
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let delete = UITableViewRowAction(style: .destructive, title: "Delete") { (action, indexPath) in
+            if self.isFiltering {
+                self.wordModels.remove(at: self.wordModels.firstIndex(where: {wordmodel in
+                    return wordmodel.word==self.filtredWordModels[indexPath.row].word
+                }) ?? -1)
+                self.filtredWordModels.remove(at: indexPath.row)
+            } else {
+                self.wordModels.remove(at: indexPath.row)
+            }
         }
-        if isFiltering {
-            wordModels.remove(at: wordModels.firstIndex(where: {wordmodel in
-                return wordmodel.word==filtredWordModels[indexPath.row].word
-            }) ?? -1)
-            filtredWordModels.remove(at: indexPath.row)
-        } else {
-            wordModels.remove(at: indexPath.row)
-        }
+
+        delete.backgroundColor = .gray
+
+        return [delete]
     }
+
 }
 
 // MARK: - UISearchControllerDelegate&UISearchResultsUpdating
