@@ -23,7 +23,7 @@ class NetworkManager: NSObject {
     }
     
     func requestGet (urlString: String, completion: @escaping (Result<Data?, NetworkErrors>) -> Void) {
-       guard let url = URL(string: urlString) else {
+        guard let url = URL(string: urlString) else {
             return
         }
         
@@ -48,9 +48,9 @@ class NetworkManager: NSObject {
             
             
             if let data = data {completion(.success(data))
-                } else {
-                    completion(.failure(.commonNetworkError))
-                    return
+            } else {
+                completion(.failure(.commonNetworkError))
+                return
             }
         })
         
@@ -83,19 +83,19 @@ class NetworkManager: NSObject {
                 return
             }
             print("Status Code: \(response.statusCode)")
-        
+            
             if let data = data {completion(.success(data))
-                }   else {
+            }   else {
                 completion(.failure(.commonNetworkError))
                 return
-        }
+            }
         }
         
         task.resume()
     }
     
     func requestPost (urlString: String, completion: @escaping (Result<Data?, NetworkErrors>) -> Void) {
-       guard let url = URL(string: urlString) else {
+        guard let url = URL(string: urlString) else {
             return
         }
         var request = URLRequest(url: url)
@@ -108,7 +108,7 @@ class NetworkManager: NSObject {
                 print("Client error!")
                 return
             }
-
+            
             guard let response = response as? HTTPURLResponse else {
                 completion(.failure(.commonNetworkError))
                 print("Server Error!")
@@ -122,9 +122,9 @@ class NetworkManager: NSObject {
             print("Status Code: \(response.statusCode)")
             
             if let data = data {completion(.success(data))
-                } else {
-                    completion(.failure(.commonNetworkError))
-                    return
+            } else {
+                completion(.failure(.commonNetworkError))
+                return
             }
         })
         

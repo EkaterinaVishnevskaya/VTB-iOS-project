@@ -15,9 +15,9 @@ class WordViewController: UIViewController {
     var word: WordModel
     
     /*init(word: WordModel) {
-        //super.init()
-        self.word = word
-    }*/
+     //super.init()
+     self.word = word
+     }*/
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -42,5 +42,5 @@ class WordViewController: UIViewController {
         translationLabel.numberOfLines = 0
         translationLabel.translatesAutoresizingMaskIntoConstraints = false
     }
-
+    
 }

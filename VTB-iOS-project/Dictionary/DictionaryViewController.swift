@@ -80,7 +80,7 @@ class DictionaryViewController: UIViewController {
         searchController.searchResultsUpdater = self
         searchController.delegate = self
         searchController.obscuresBackgroundDuringPresentation = false
-       
+        
         let searchBar = searchController.searchBar
         searchBar.translatesAutoresizingMaskIntoConstraints = false
         searchBar.placeholder = "search"
@@ -136,7 +136,7 @@ extension DictionaryViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
     }
-
+    
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
     }
@@ -165,12 +165,12 @@ extension DictionaryViewController: UITableViewDelegate, UITableViewDataSource {
                 self.wordModels.remove(at: indexPath.row)
             }
         }
-
+        
         delete.backgroundColor = .gray
-
+        
         return [delete]
     }
-
+    
 }
 
 // MARK: - UISearchControllerDelegate&UISearchResultsUpdating

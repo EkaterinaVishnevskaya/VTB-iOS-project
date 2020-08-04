@@ -16,7 +16,7 @@ final class BookCollectionViewCell: UICollectionViewCell {
         static let cellID = "bookcell"
         static let height: CGFloat = 150
     }
-
+    
     // MARK: - Properties
     
     private var nameLabel: UILabel!
