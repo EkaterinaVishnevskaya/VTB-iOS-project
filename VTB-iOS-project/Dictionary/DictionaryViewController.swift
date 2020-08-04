@@ -102,14 +102,48 @@ class DictionaryViewController: UIViewController {
         headerLabel.textColor = .black
         headerView.addSubview(headerLabel)
         
+        let addButton = UIButton()
+        addButton.translatesAutoresizingMaskIntoConstraints = false
+        addButton.setAttributedTitle(NSAttributedString(string: "+", attributes: [ NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 28)]), for: .normal)
+        addButton.addTarget(self, action: #selector(addWord), for: .touchUpInside)
+        headerView.addSubview(addButton)
+        
         NSLayoutConstraint.activate([
             headerLabel.leadingAnchor.constraint(equalTo: headerView.leadingAnchor, constant: 10),
             headerLabel.topAnchor.constraint(equalTo: headerView.topAnchor, constant: 10),
             searchBar.leadingAnchor.constraint(equalTo: headerView.leadingAnchor),
             searchBar.trailingAnchor.constraint(equalTo: headerView.trailingAnchor),
-            searchBar.bottomAnchor.constraint(equalTo: headerView.bottomAnchor)
+            searchBar.bottomAnchor.constraint(equalTo: headerView.bottomAnchor),
+            addButton.topAnchor.constraint(equalTo: headerView.topAnchor, constant: 5),
+            addButton.trailingAnchor.constraint(equalTo: headerView.trailingAnchor, constant: -5)
         ])
         return headerView
+    }
+    
+    @objc private func addWord() {
+        let alert = UIAlertController(title: "Enter word", message: nil, preferredStyle: .alert)
+        alert.addTextField(configurationHandler: { textField in
+            textField.placeholder = "Input your word"
+        })
+        alert.addAction(UIAlertAction(title: "Add", style: .default, handler: { action in
+            guard let word = alert.textFields?.first?.text else {
+                return
+            }
+            TranslationAPIManager.translationAPIManager.translateFromEngToRus(word: word, completion: {translation in
+                    if let translation = translation {
+                        let model = WordModel(word: word, translation: translation)
+                        let queue = DispatchQueue.main
+                        queue.async {
+                            self.wordModels.append(model)
+                        }
+                    } else {
+                        return
+                    }
+                })
+        }))
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+
+        self.present(alert, animated: true)
     }
 }
 
