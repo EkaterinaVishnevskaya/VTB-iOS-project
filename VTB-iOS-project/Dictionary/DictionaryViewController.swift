@@ -130,19 +130,19 @@ class DictionaryViewController: UIViewController {
                 return
             }
             TranslationAPIManager.translationAPIManager.translateFromEngToRus(word: word, completion: {translation in
-                    if let translation = translation {
-                        let model = WordModel(word: word, translation: translation)
-                        let queue = DispatchQueue.main
-                        queue.async {
-                            self.wordModels.append(model)
-                        }
-                    } else {
-                        return
+                if let translation = translation {
+                    let model = WordModel(word: word, translation: translation)
+                    let queue = DispatchQueue.main
+                    queue.async {
+                        self.wordModels.append(model)
                     }
-                })
+                } else {
+                    return
+                }
+            })
         }))
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-
+        
         self.present(alert, animated: true)
     }
 }
