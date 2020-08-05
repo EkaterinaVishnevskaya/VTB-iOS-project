@@ -11,6 +11,7 @@
 		F034461B24D5BD6700CF1006 /* WordDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F034461A24D5BD6600CF1006 /* WordDetailsViewController.swift */; };
 		F034461D24D998A300CF1006 /* DictionaryRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F034461C24D998A300CF1006 /* DictionaryRouter.swift */; };
 		F034461F24D9A3A400CF1006 /* DictionaryNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F034461E24D9A3A400CF1006 /* DictionaryNavigationController.swift */; };
+		F034462324DB39B200CF1006 /* DictionaryDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F034462224DB39B200CF1006 /* DictionaryDataManager.swift */; };
 		F03879A824A9F9CC00938079 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F03879A724A9F9CC00938079 /* AppDelegate.swift */; };
 		F03879AA24A9F9CC00938079 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F03879A924A9F9CC00938079 /* SceneDelegate.swift */; };
 		F03879AF24A9F9CC00938079 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F03879AD24A9F9CC00938079 /* Main.storyboard */; };
@@ -52,6 +53,7 @@
 		F034461A24D5BD6600CF1006 /* WordDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordDetailsViewController.swift; sourceTree = "<group>"; };
 		F034461C24D998A300CF1006 /* DictionaryRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryRouter.swift; sourceTree = "<group>"; };
 		F034461E24D9A3A400CF1006 /* DictionaryNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryNavigationController.swift; sourceTree = "<group>"; };
+		F034462224DB39B200CF1006 /* DictionaryDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DictionaryDataManager.swift; path = Dictionary/DictionaryDataManager.swift; sourceTree = "<group>"; };
 		F03879A424A9F9CC00938079 /* VTB-iOS-project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "VTB-iOS-project.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F03879A724A9F9CC00938079 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F03879A924A9F9CC00938079 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -175,6 +177,7 @@
 				F034461C24D998A300CF1006 /* DictionaryRouter.swift */,
 				F034461A24D5BD6600CF1006 /* WordDetailsViewController.swift */,
 				F034461E24D9A3A400CF1006 /* DictionaryNavigationController.swift */,
+				F034462224DB39B200CF1006 /* DictionaryDataManager.swift */,
 				F0BF106424D2174600AE61BB /* WordCell */,
 			);
 			name = Dictionary;
@@ -352,6 +355,7 @@
 				F0BF107524D21AFC00AE61BB /* LibraryViewController.swift in Sources */,
 				F034461924D40D5200CF1006 /* TabBarViewController.swift in Sources */,
 				F0F87C3924BE5DE400FBDBE5 /* TranslationAPIManager.swift in Sources */,
+				F034462324DB39B200CF1006 /* DictionaryDataManager.swift in Sources */,
 				F034461F24D9A3A400CF1006 /* DictionaryNavigationController.swift in Sources */,
 				F03879AA24A9F9CC00938079 /* SceneDelegate.swift in Sources */,
 			);

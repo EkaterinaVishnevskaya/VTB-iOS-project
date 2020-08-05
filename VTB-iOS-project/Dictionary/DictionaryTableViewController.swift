@@ -50,7 +50,7 @@ class DictionaryTableViewController: UIViewController {
     }
     
     private func loadData() {
-        wordModels = [WordModel(word: "one", translation: "один1\nодин2\nодин3\nодин4\nодин5"), WordModel(word: "two", translation: "два"), WordModel(word: "three", translation: "три"), WordModel(word: "four", translation: "четыре"), WordModel(word: "five", translation: "пять"), WordModel(word: "six", translation: "шесть"), WordModel(word: "seven", translation: "семь"), WordModel(word: "eight", translation: "восемь"), WordModel(word: "nine", translation: "девять"), WordModel(word: "ten", translation: "десять")]
+        wordModels = DictionaryDataManager.dataManager.read()
     }
     
     private func setLayout() {
@@ -108,6 +108,7 @@ class DictionaryTableViewController: UIViewController {
             TranslationAPIManager.translationAPIManager.translateFromEngToRus(word: word, completion: {translation in
                 if let translation = translation {
                     let model = WordModel(word: word, translation: translation)
+                    DictionaryDataManager.dataManager.add(wordModel: model)
                     let queue = DispatchQueue.main
                     queue.async {
                         self.wordModels.append(model)
@@ -167,6 +168,7 @@ extension DictionaryTableViewController: UITableViewDelegate, UITableViewDataSou
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let delete = UITableViewRowAction(style: .destructive, title: "Delete") { (action, indexPath) in
+            DictionaryDataManager.dataManager.delete(word: self.wordModels[indexPath.row].word)
             if self.isFiltering {
                 self.wordModels.remove(at: self.wordModels.firstIndex(where: {wordmodel in
                     return wordmodel.word==self.filtredWordModels[indexPath.row].word

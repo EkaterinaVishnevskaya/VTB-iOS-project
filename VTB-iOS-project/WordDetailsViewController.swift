@@ -19,14 +19,6 @@ class WordDetailsViewController: UIViewController {
         
         view.backgroundColor = .black
         
-        if (navigationItem.backBarButtonItem != nil) {
-            navigationItem.backBarButtonItem?.title = "Back - Назад"
-            navigationItem.backBarButtonItem?.tintColor = .black
-        } else {
-            print("navigationItem.backBarButtonItem - nil")
-        }
-        
-        
         wordLabel = UILabel()
         wordLabel.text = word.word
         wordLabel.textColor = .white
@@ -45,6 +37,16 @@ class WordDetailsViewController: UIViewController {
             wordLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 100),
             translationLabel.topAnchor.constraint(equalTo: wordLabel.bottomAnchor, constant: 10)
         ])
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if (navigationItem.backBarButtonItem != nil) {
+            navigationItem.backBarButtonItem?.title = "Back - Назад"
+            navigationItem.backBarButtonItem?.tintColor = .black
+        } else {
+            print("navigationItem.backBarButtonItem - nil")
+        }
     }
     
     func setWord (_ word: WordModel) {
