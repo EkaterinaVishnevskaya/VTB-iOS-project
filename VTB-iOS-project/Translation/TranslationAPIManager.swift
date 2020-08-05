@@ -16,8 +16,8 @@ class TranslationAPIManager {
     static let translationAPIManager = TranslationAPIManager()
     
     func translateFromEngToRus(word: String, completion: ((String?) -> Void)?) {
-        
-        let url = "https://translation.googleapis.com/language/translate/v2?q=\(word)&sourse=EN&target=RU&key=\(Constants.APIKey)"
+        let formatedWord = word.split(separator: " ").joined(separator: "+")
+        let url = "https://translation.googleapis.com/language/translate/v2?q=\(formatedWord)&sourse=EN&target=RU&key=\(Constants.APIKey)"
         NetworkManager.networkManager.requestPost(urlString: url) { result in
             switch result {
             case .success(let data):
