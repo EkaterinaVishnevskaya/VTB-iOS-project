@@ -60,8 +60,12 @@ class DictionaryDataManager {
             let words = try context.fetch(fetchRequest)
             var result:[WordModel] = []
             for data in words {
-                guard let word = data.value(forKey: "word") as? String else { return result }
-                guard let translation = data.value(forKey: "translation") as? String else { return result }
+                guard let word = data.value(forKey: "word") as? String else {
+                    return result
+                }
+                guard let translation = data.value(forKey: "translation") as? String else {
+                    return result
+                }
                 let model = WordModel(word: word, translation: translation)
                 result.append(model)
             }
@@ -77,9 +81,10 @@ class DictionaryDataManager {
             return
         }
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Word")
-        fetchRequest.predicate = NSPredicate(format: "word == \(word)")
+        fetchRequest.predicate = NSPredicate(format: "word == %@", word)
         do {
             let words = try context.fetch(fetchRequest)
+            print(words.count)
             for data in words {
                 context.delete(data)
             }
