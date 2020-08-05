@@ -9,7 +9,7 @@
 import UIKit
 import Foundation
 
-class DictionaryViewController: UIViewController {
+class DictionaryTableViewController: UINavigationController {
     
     // MARK: - Properties
     
@@ -56,26 +56,32 @@ class DictionaryViewController: UIViewController {
     private func setLayout() {
         let safeArea = view.safeAreaLayoutGuide
         view.backgroundColor = . gray
-        let headerView = setHeaderView()
+        setHeaderView()
+        //let headerView = UIView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.backgroundColor = .gray
-        view.addSubview(headerView)
+        //view.addSubview(headerView)
         view.addSubview(tableView)
         NSLayoutConstraint.activate([
-            headerView.topAnchor.constraint(equalTo: safeArea.topAnchor),
-            headerView.heightAnchor.constraint(equalToConstant: 100),
-            headerView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor),
-            headerView.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor),
-            tableView.topAnchor.constraint(equalTo: headerView.bottomAnchor),
+            //headerView.topAnchor.constraint(equalTo: safeArea.topAnchor),
+            //headerView.heightAnchor.constraint(equalToConstant: 100),
+            //headerView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor),
+            //headerView.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor),
+            tableView.topAnchor.constraint(equalTo: safeArea.topAnchor),
             tableView.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor),
             tableView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor),
             tableView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor)
         ])
     }
     
-    private func setHeaderView() -> UIView {
-        let headerView = UIView()
-        headerView.translatesAutoresizingMaskIntoConstraints = false
+    private func setHeaderView() {
+        let addButton = UIBarButtonItem(title: "+", style: .plain, target: self, action: #selector(addWord))
+        addButton.tintColor = .black
+        navigationItem.leftBarButtonItem = addButton
+        
+        navigationItem.largeTitleDisplayMode = .automatic
+        title = "Dictionary - Словарь"
+        
         
         searchController.searchResultsUpdater = self
         searchController.delegate = self
@@ -93,31 +99,39 @@ class DictionaryViewController: UIViewController {
             textfield.layer.borderWidth = 0.5
             textfield.layer.borderColor = UIColor.black.cgColor
         }
-        headerView.addSubview(searchBar)
         
-        let headerLabel = UILabel()
-        headerLabel.translatesAutoresizingMaskIntoConstraints = false
-        headerLabel.text = "Dictionary - Словарь"
-        headerLabel.font = UIFont.boldSystemFont(ofSize: 24.0)
-        headerLabel.textColor = .black
-        headerView.addSubview(headerLabel)
+        navigationItem.searchController = searchController
+        navigationItem.hidesSearchBarWhenScrolling = false
         
-        let addButton = UIButton()
-        addButton.translatesAutoresizingMaskIntoConstraints = false
-        addButton.setAttributedTitle(NSAttributedString(string: "+", attributes: [ NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 28)]), for: .normal)
-        addButton.addTarget(self, action: #selector(addWord), for: .touchUpInside)
-        headerView.addSubview(addButton)
-        
-        NSLayoutConstraint.activate([
-            headerLabel.leadingAnchor.constraint(equalTo: headerView.leadingAnchor, constant: 10),
-            headerLabel.topAnchor.constraint(equalTo: headerView.topAnchor, constant: 10),
-            searchBar.leadingAnchor.constraint(equalTo: headerView.leadingAnchor),
-            searchBar.trailingAnchor.constraint(equalTo: headerView.trailingAnchor),
-            searchBar.bottomAnchor.constraint(equalTo: headerView.bottomAnchor),
-            addButton.topAnchor.constraint(equalTo: headerView.topAnchor, constant: 5),
-            addButton.trailingAnchor.constraint(equalTo: headerView.trailingAnchor, constant: -5)
-        ])
-        return headerView
+        /*let headerView = UIView()
+         headerView.translatesAutoresizingMaskIntoConstraints = false
+         
+         
+         headerView.addSubview(searchBar)
+         
+         let headerLabel = UILabel()
+         headerLabel.translatesAutoresizingMaskIntoConstraints = false
+         headerLabel.text =
+         headerLabel.font = UIFont.boldSystemFont(ofSize: 24.0)
+         headerLabel.textColor = .black
+         headerView.addSubview(headerLabel)
+         
+         let addButton = UIButton()
+         addButton.translatesAutoresizingMaskIntoConstraints = false
+         addButton.setAttributedTitle(NSAttributedString(string: "+", attributes: [ NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 28)]), for: .normal)
+         addButton.addTarget(self, action: #selector(addWord), for: .touchUpInside)
+         headerView.addSubview(addButton)
+         
+         NSLayoutConstraint.activate([
+         headerLabel.leadingAnchor.constraint(equalTo: headerView.leadingAnchor, constant: 10),
+         headerLabel.topAnchor.constraint(equalTo: headerView.topAnchor, constant: 10),
+         searchBar.leadingAnchor.constraint(equalTo: headerView.leadingAnchor),
+         searchBar.trailingAnchor.constraint(equalTo: headerView.trailingAnchor),
+         searchBar.bottomAnchor.constraint(equalTo: headerView.bottomAnchor),
+         addButton.topAnchor.constraint(equalTo: headerView.topAnchor, constant: 5),
+         addButton.trailingAnchor.constraint(equalTo: headerView.trailingAnchor, constant: -5)
+         ])
+         return headerView*/
     }
     
     @objc private func addWord() {
@@ -148,7 +162,7 @@ class DictionaryViewController: UIViewController {
 }
 
 // MARK: - UITableViewDelegate & UITableViewDataSource
-extension DictionaryViewController: UITableViewDelegate, UITableViewDataSource {
+extension DictionaryTableViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if isFiltering {
             return filtredWordModels.count
@@ -176,8 +190,9 @@ extension DictionaryViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //TODO
-        tableView.deselectRow(at: indexPath, animated: true)
+        let router = DictionaryRouter()
+        router.viewController = self
+        router.navigateToWordDetailsViewController(word: wordModels[indexPath.row])
     }
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
@@ -209,7 +224,7 @@ extension DictionaryViewController: UITableViewDelegate, UITableViewDataSource {
 
 // MARK: - UISearchControllerDelegate&UISearchResultsUpdating
 
-extension DictionaryViewController: UISearchControllerDelegate {
+extension DictionaryTableViewController: UISearchControllerDelegate {
     
     var isSearchBarEmpty: Bool {
         return searchController.searchBar.text?.isEmpty ?? true
@@ -220,13 +235,13 @@ extension DictionaryViewController: UISearchControllerDelegate {
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        filtredWordModels = wordModels.filter(){wordmodel in
+        filtredWordModels = wordModels.filter() {wordmodel in
             return wordmodel.word.contains(searchText)
         }
     }
 }
 
-extension DictionaryViewController: UISearchResultsUpdating {
+extension DictionaryTableViewController: UISearchResultsUpdating {
     
     func filterContentForSearchText(_ searchText: String) {
         filtredWordModels = wordModels.filter(){wordmodel in

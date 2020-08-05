@@ -8,20 +8,11 @@
 
 import UIKit
 
-class WordViewController: UIViewController {
+class WordDetailsViewController: UINavigationController {
     
     private var wordLabel: UILabel!
     private var translationLabel: UILabel!
-    var word: WordModel
-    
-    /*init(word: WordModel) {
-     //super.init()
-     self.word = word
-     }*/
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+    private var word = WordModel(word: "", translation: "")
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,4 +34,7 @@ class WordViewController: UIViewController {
         translationLabel.translatesAutoresizingMaskIntoConstraints = false
     }
     
+    func setWord (_ word: WordModel) {
+        self.word = word
+    }
 }

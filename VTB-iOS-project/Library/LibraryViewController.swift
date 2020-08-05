@@ -86,7 +86,7 @@ extension LibraryViewController: UICollectionViewDataSource, UICollectionViewDel
 extension LibraryViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: UIScreen.main.bounds.width, height: BookCollectionViewCell.Locals.height)
+        return CGSize(width: collectionView.frame.width, height: BookCollectionViewCell.Locals.height)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {

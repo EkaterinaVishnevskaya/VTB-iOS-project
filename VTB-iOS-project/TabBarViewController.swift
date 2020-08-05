@@ -22,7 +22,7 @@ class TabBarController: UITabBarController {
         let item1 = LibraryViewController()
         item1.tabBarItem = UITabBarItem(title: "Library", image: UIImage(named: "Library"), tag: 0)
         
-        let item2 = DictionaryViewController()
+        let item2 = DictionaryNavigationController(rootViewController: DictionaryTableViewController())
         item2.tabBarItem = UITabBarItem(title: "Dictionary", image: UIImage(named: "Dictionary"), tag: 0)
         
         self.viewControllers = [item1, item2]
