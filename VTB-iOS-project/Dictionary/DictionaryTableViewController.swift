@@ -72,8 +72,7 @@ class DictionaryTableViewController: UIViewController {
         navigationItem.rightBarButtonItem = addButton
         
         navigationItem.largeTitleDisplayMode = .automatic
-        title = "Dictionary - Словарь"
-        
+        title = "Dictionary"
         
         searchController.searchResultsUpdater = self
         searchController.delegate = self

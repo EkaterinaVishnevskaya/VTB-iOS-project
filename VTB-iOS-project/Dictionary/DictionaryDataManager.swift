@@ -7,16 +7,17 @@
 //
 
 import UIKit
+import CoreData
 
 class DictionaryDataManager {
     
     static let dataManager = DictionaryDataManager()
+    private let appdelegate = UIApplication.shared.delegate as? AppDelegate
     
     func add(word: String) {
         TranslationAPIManager.translationAPIManager.translateFromEngToRus(word: word, completion: {translation in
             if let translation = translation {
-                let model = WordModel(word: word, translation: translation)
-                print("\(model.word) - \(model.translation) is added ")
+                self.add(wordModel: WordModel(word: word, translation: translation))
             } else {
                 return
             }
@@ -24,14 +25,73 @@ class DictionaryDataManager {
     }
     
     func add(wordModel: WordModel) {
-        print("\(wordModel.word) - \(wordModel.translation) is added ")
+        let queue = DispatchQueue.main
+        queue.async {
+            
+            guard let context = self.appdelegate?.persistentContainer.viewContext else {
+                return
+            }
+            
+            guard let entity = NSEntityDescription.entity(forEntityName: "Word", in: context) else {
+                return
+            }
+            
+            let wordEntity = NSManagedObject(entity: entity, insertInto: context)
+            wordEntity.setValue(wordModel.word, forKey: "word")
+            wordEntity.setValue(wordModel.translation, forKey: "translation")
+            
+            do {
+                try context.save()
+                print("\(wordModel.word) - \(wordModel.translation) is added ")
+            } catch  {
+                print("Fail to save")
+            }
+        }
+        
     }
     
     func read() -> [WordModel] {
-        return [WordModel(word: "one", translation: "один1\nодин2\nодин3\nодин4\nодин5"), WordModel(word: "two", translation: "два"), WordModel(word: "three", translation: "три"), WordModel(word: "four", translation: "четыре"), WordModel(word: "five", translation: "пять"), WordModel(word: "six", translation: "шесть"), WordModel(word: "seven", translation: "семь"), WordModel(word: "eight", translation: "восемь"), WordModel(word: "nine", translation: "девять"), WordModel(word: "ten", translation: "десять")]
+        guard let context = self.appdelegate?.persistentContainer.viewContext else {
+            print("Data Error!")
+            return []
+        }
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Word")
+        do {
+            let words = try context.fetch(fetchRequest)
+            var result:[WordModel] = []
+            for data in words {
+                guard let word = data.value(forKey: "word") as? String else { return result }
+                guard let translation = data.value(forKey: "translation") as? String else { return result }
+                let model = WordModel(word: word, translation: translation)
+                result.append(model)
+            }
+            return result
+        } catch let error as NSError {
+            print("Data Error: \(error.userInfo)")
+            return []
+        }
     }
-
+    
     func delete(word: String) {
-        print("\(word) is deleted")
+        guard let context = self.appdelegate?.persistentContainer.viewContext else {
+            return
+        }
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Word")
+        fetchRequest.predicate = NSPredicate(format: "word == \(word)")
+        do {
+            let words = try context.fetch(fetchRequest)
+            for data in words {
+                context.delete(data)
+            }
+        } catch let error as NSError {
+            print("Data Error: \(error.userInfo)")
+            return
+        }
+        do {
+            try context.save()
+            print("\(word) is deleted")
+        } catch  {
+            print("Fail to save")
+        }
     }
 }
