@@ -15,7 +15,7 @@ class WordTableViewCell: UITableViewCell {
     
     enum Locals {
         static let cellID = "wordcell"
-        static let maxCellHeight: CGFloat = 100
+        static let maxCellHeight: CGFloat = 101
     }
     
     // MARK: - Properties
@@ -68,12 +68,11 @@ class WordTableViewCell: UITableViewCell {
     private func setConstraints() {
         NSLayoutConstraint.activate([
             wordLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 5),
-            wordLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -5),
             wordLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 5),
             translationLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 5),
-            translationLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -5),
             translationLabel.topAnchor.constraint(equalTo: wordLabel.bottomAnchor, constant: 5),
             translationLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -5),
+            translationLabel.heightAnchor.constraint(lessThanOrEqualToConstant: 61),
             contentView.heightAnchor.constraint(lessThanOrEqualToConstant: Locals.maxCellHeight)
         ])
     }

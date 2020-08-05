@@ -8,7 +8,7 @@
 
 import UIKit
 
-class WordDetailsViewController: UINavigationController {
+class WordDetailsViewController: UIViewController {
     
     private var wordLabel: UILabel!
     private var translationLabel: UILabel!
@@ -19,19 +19,32 @@ class WordDetailsViewController: UINavigationController {
         
         view.backgroundColor = .black
         
+        if (navigationItem.backBarButtonItem != nil) {
+            navigationItem.backBarButtonItem?.title = "Back - Назад"
+            navigationItem.backBarButtonItem?.tintColor = .black
+        } else {
+            print("navigationItem.backBarButtonItem - nil")
+        }
+        
+        
         wordLabel = UILabel()
         wordLabel.text = word.word
         wordLabel.textColor = .white
-        wordLabel.backgroundColor = .black
         wordLabel.font = UIFont.boldSystemFont(ofSize: 32.0)
         wordLabel.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(wordLabel)
         
         translationLabel = UILabel()
         translationLabel.text = word.translation
         translationLabel.textColor = .white
-        translationLabel.backgroundColor = .black
         translationLabel.numberOfLines = 0
         translationLabel.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(translationLabel)
+        NSLayoutConstraint.activate([
+            wordLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            wordLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 100),
+            translationLabel.topAnchor.constraint(equalTo: wordLabel.bottomAnchor, constant: 10)
+        ])
     }
     
     func setWord (_ word: WordModel) {
