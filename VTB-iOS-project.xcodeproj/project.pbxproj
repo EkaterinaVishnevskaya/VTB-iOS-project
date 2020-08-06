@@ -127,11 +127,11 @@
 		F03879A624A9F9CC00938079 /* VTB-iOS-project */ = {
 			isa = PBXGroup;
 			children = (
-				F034461824D40D5200CF1006 /* TabBarViewController.swift */,
-				F0BF107324D21AEC00AE61BB /* Library */,
-				F0F87C3A24BF2E3600FBDBE5 /* NetworkManager.swift */,
-				F0BF106524D2176E00AE61BB /* Dictionary */,
 				F0F87C3E24BF34AC00FBDBE5 /* Translation */,
+				F0BF106524D2176E00AE61BB /* Dictionary */,
+				F0BF107324D21AEC00AE61BB /* Library */,
+				F034461824D40D5200CF1006 /* TabBarViewController.swift */,
+				F0F87C3A24BF2E3600FBDBE5 /* NetworkManager.swift */,
 				F03879A724A9F9CC00938079 /* AppDelegate.swift */,
 				F03879A924A9F9CC00938079 /* SceneDelegate.swift */,
 				F03879AD24A9F9CC00938079 /* Main.storyboard */,
@@ -173,12 +173,12 @@
 		F0BF106524D2176E00AE61BB /* Dictionary */ = {
 			isa = PBXGroup;
 			children = (
-				F0BF106624D217C700AE61BB /* DictionaryTableViewController.swift */,
-				F034461C24D998A300CF1006 /* DictionaryRouter.swift */,
-				F034461A24D5BD6600CF1006 /* WordDetailsViewController.swift */,
-				F034461E24D9A3A400CF1006 /* DictionaryNavigationController.swift */,
-				F034462224DB39B200CF1006 /* DictionaryDataManager.swift */,
 				F0BF106424D2174600AE61BB /* WordCell */,
+				F034461E24D9A3A400CF1006 /* DictionaryNavigationController.swift */,
+				F0BF106624D217C700AE61BB /* DictionaryTableViewController.swift */,
+				F034461A24D5BD6600CF1006 /* WordDetailsViewController.swift */,
+				F034461C24D998A300CF1006 /* DictionaryRouter.swift */,
+				F034462224DB39B200CF1006 /* DictionaryDataManager.swift */,
 			);
 			name = Dictionary;
 			sourceTree = "<group>";

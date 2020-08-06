@@ -59,7 +59,7 @@ class LibraryViewController: UIViewController {
     
     private func loadData() {
         
-        bookModels = [BookModel(name: "one"), BookModel(name: "two"), BookModel(name: "three"), BookModel(name: "four"), BookModel(name: "five"), BookModel(name: "six"), BookModel(name: "seven"), BookModel(name: "eight"), BookModel(name: "nine"),BookModel(name: "ten"), BookModel(name: "un"), BookModel(name: "deux"),BookModel(name: "trois"), BookModel(name: "quatre"), BookModel(name: "cinq"),BookModel(name: "six"), BookModel(name: "sept"), BookModel(name: "huit"),BookModel(name: "neuf"), BookModel(name: "dix"), BookModel(name: "один"), BookModel(name: "два"),BookModel(name: "три"), BookModel(name: "четыре"), BookModel(name: "пять"),BookModel(name: "шесть"), BookModel(name: "семь"), BookModel(name: "восемь"),BookModel(name: "девять"), BookModel(name: "десять")]
+        bookModels = [BookModel(title: "one"), BookModel(title: "two"), BookModel(title: "three"), BookModel(title: "four"), BookModel(title: "five"), BookModel(title: "six"), BookModel(title: "seven"), BookModel(title: "eight"), BookModel(title: "nine"),BookModel(title: "ten"), BookModel(title: "un"), BookModel(title: "deux"),BookModel(title: "trois"), BookModel(title: "quatre"), BookModel(title: "cinq"),BookModel(title: "six"), BookModel(title: "sept"), BookModel(title: "huit"),BookModel(title: "neuf"), BookModel(title: "dix"), BookModel(title: "один"), BookModel(title: "два"),BookModel(title: "три"), BookModel(title: "четыре"), BookModel(title: "пять"),BookModel(title: "шесть"), BookModel(title: "семь"), BookModel(title: "восемь"),BookModel(title: "девять"), BookModel(title: "десять")]
     }
 }
 

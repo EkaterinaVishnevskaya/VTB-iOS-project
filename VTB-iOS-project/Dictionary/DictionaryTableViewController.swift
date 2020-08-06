@@ -33,6 +33,11 @@ class DictionaryTableViewController: UIViewController {
         tableView = UITableView()
         setLayout()
         configureTableView()
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         loadData()
     }
     
@@ -110,7 +115,7 @@ class DictionaryTableViewController: UIViewController {
                     DictionaryDataManager.dataManager.add(wordModel: model)
                     let queue = DispatchQueue.main
                     queue.async {
-                        self.wordModels.append(model)
+                        self.wordModels = DictionaryDataManager.dataManager.read()
                     }
                 } else {
                     return
@@ -167,10 +172,10 @@ extension DictionaryTableViewController: UITableViewDelegate, UITableViewDataSou
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let delete = UITableViewRowAction(style: .destructive, title: "Delete") { (action, indexPath) in
-            DictionaryDataManager.dataManager.delete(word: self.wordModels[indexPath.row].word)
+            DictionaryDataManager.dataManager.delete(wordModel: self.wordModels[indexPath.row])
             if self.isFiltering {
                 self.wordModels.remove(at: self.wordModels.firstIndex(where: {wordmodel in
-                    return wordmodel.word==self.filtredWordModels[indexPath.row].word
+                    return (wordmodel.word == self.filtredWordModels[indexPath.row].word) && (wordmodel.translation == self.filtredWordModels[indexPath.row].translation)
                 }) ?? -1)
                 self.filtredWordModels.remove(at: indexPath.row)
             } else {
@@ -207,7 +212,7 @@ extension DictionaryTableViewController: UISearchControllerDelegate {
 extension DictionaryTableViewController: UISearchResultsUpdating {
     
     func filterContentForSearchText(_ searchText: String) {
-        filtredWordModels = wordModels.filter(){wordmodel in
+        filtredWordModels = wordModels.filter() { wordmodel in
             return wordmodel.word.lowercased().contains(searchText.lowercased()) || wordmodel.translation.lowercased().contains(searchText.lowercased())
         }
         tableView.reloadData()

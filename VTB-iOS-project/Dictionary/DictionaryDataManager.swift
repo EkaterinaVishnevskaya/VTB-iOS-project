@@ -14,6 +14,7 @@ class DictionaryDataManager {
     static let dataManager = DictionaryDataManager()
     private let appdelegate = UIApplication.shared.delegate as? AppDelegate
     
+    //MARK: - Create
     func add(word: String) {
         TranslationAPIManager.translationAPIManager.translateFromEngToRus(word: word, completion: {translation in
             if let translation = translation {
@@ -32,17 +33,32 @@ class DictionaryDataManager {
                 return
             }
             
-            guard let entity = NSEntityDescription.entity(forEntityName: "Word", in: context) else {
+            guard let entity = NSEntityDescription.entity(forEntityName: "Dictionary", in: context) else {
                 return
             }
             
+            let word = wordModel.word
+            let translation = wordModel.translation
+            
+            let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Dictionary")
+            fetchRequest.predicate = NSPredicate(format: "(word == %@) && (translation == %@)", word, translation)
+            do {
+                let words = try context.fetch(fetchRequest)
+                if words.count>0 {
+                    print("\(word) - \(translation) have been added earlier")
+                    return
+                }
+            } catch let error as NSError {
+                print("FetchRequesr Error: \(error.userInfo)")
+            }
+            
             let wordEntity = NSManagedObject(entity: entity, insertInto: context)
-            wordEntity.setValue(wordModel.word, forKey: "word")
-            wordEntity.setValue(wordModel.translation, forKey: "translation")
+            wordEntity.setValue(word, forKey: "word")
+            wordEntity.setValue(translation, forKey: "translation")
             
             do {
                 try context.save()
-                print("\(wordModel.word) - \(wordModel.translation) is added ")
+                print("\(word) - \(translation) is added ")
             } catch  {
                 print("Fail to save")
             }
@@ -50,12 +66,13 @@ class DictionaryDataManager {
         
     }
     
+    //MARK: - Read
     func read() -> [WordModel] {
         guard let context = self.appdelegate?.persistentContainer.viewContext else {
             print("Data Error!")
             return []
         }
-        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Word")
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Dictionary")
         do {
             let words = try context.fetch(fetchRequest)
             var result:[WordModel] = []
@@ -76,15 +93,43 @@ class DictionaryDataManager {
         }
     }
     
-    func delete(word: String) {
+    //MARK: - Update
+    func update(wordModel: WordModel, newTranslation: String) {
         guard let context = self.appdelegate?.persistentContainer.viewContext else {
             return
         }
-        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Word")
-        fetchRequest.predicate = NSPredicate(format: "word == %@", word)
+        let word = wordModel.word
+        let translation = wordModel.translation
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Dictionary")
+        fetchRequest.predicate = NSPredicate(format: "(word == %@) && (translation == %@)", word, translation)
         do {
             let words = try context.fetch(fetchRequest)
-            print(words.count)
+            for data in words {
+                data.setValue(newTranslation, forKey: "translation")
+            }
+        } catch let error as NSError {
+            print("Data Error: \(error.userInfo)")
+            return
+        }
+        do {
+            try context.save()
+            print("\(word) is deleted")
+        } catch  {
+            print("Fail to save")
+        }
+    }    
+    
+    //MARK: - Delete
+    func delete(wordModel: WordModel) {
+        guard let context = self.appdelegate?.persistentContainer.viewContext else {
+            return
+        }
+        let word = wordModel.word
+        let translation = wordModel.translation
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Dictionary")
+        fetchRequest.predicate = NSPredicate(format: "(word == %@) && (translation == %@)", word, translation)
+        do {
+            let words = try context.fetch(fetchRequest)
             for data in words {
                 context.delete(data)
             }
