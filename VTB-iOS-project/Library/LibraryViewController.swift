@@ -38,8 +38,6 @@ class LibraryViewController: UIViewController {
     
     private func setCollectionView() {
         
-        let safeArea = view.safeAreaLayoutGuide
-        
         let flowLayout = UICollectionViewFlowLayout ()
         flowLayout.scrollDirection = .vertical
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
@@ -49,10 +47,10 @@ class LibraryViewController: UIViewController {
         view.addSubview(collectionView)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            collectionView.topAnchor.constraint(equalTo: safeArea.topAnchor),
-            collectionView.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor),
-            collectionView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor),
-            collectionView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor)
+            collectionView.topAnchor.constraint(equalTo: view.topAnchor),
+            collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
         collectionView.register(BookCollectionViewCell.self, forCellWithReuseIdentifier: BookCollectionViewCell.Locals.cellID)
     }

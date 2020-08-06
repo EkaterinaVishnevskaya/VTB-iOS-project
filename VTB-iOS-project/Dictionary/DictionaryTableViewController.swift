@@ -76,7 +76,11 @@ class DictionaryTableViewController: UIViewController {
         addButton.tintColor = .black
         navigationItem.rightBarButtonItem = addButton
         
-        navigationItem.largeTitleDisplayMode = .automatic
+        if #available(iOS 11.0, *) {
+            navigationItem.largeTitleDisplayMode = .automatic
+        } else {
+            // Fallback on earlier versions
+        }
         title = "Dictionary"
         
         searchController.searchResultsUpdater = self
@@ -96,8 +100,13 @@ class DictionaryTableViewController: UIViewController {
             textfield.layer.borderColor = UIColor.black.cgColor
         }
         
-        navigationItem.searchController = searchController
-        navigationItem.hidesSearchBarWhenScrolling = false
+        if #available(iOS 11.0, *) {
+            navigationItem.searchController = searchController
+            navigationItem.hidesSearchBarWhenScrolling = false
+        } else {
+            tableView.tableHeaderView = searchController.searchBar
+        }
+        
     }
     
     @objc private func addWord() {
