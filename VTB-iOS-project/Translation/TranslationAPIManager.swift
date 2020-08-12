@@ -13,7 +13,7 @@ class TranslationAPIManager {
     private enum Constants {
         static let APIKey = "AIzaSyCZ0ZYon-YUkQhr8AyCvLe5QklgeurodJU"
     }
-    static let translationAPIManager = TranslationAPIManager()
+    static let shared = TranslationAPIManager()
     
     func translateFromEngToRus(word: String, completion: ((String?) -> Void)?) {
         let formatedWord = word.split(separator: " ").joined(separator: "+")

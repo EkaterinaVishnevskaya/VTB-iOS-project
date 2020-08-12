@@ -9,9 +9,5 @@
 import UIKit
 
 class DictionaryNavigationController: UINavigationController {
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
+
 }

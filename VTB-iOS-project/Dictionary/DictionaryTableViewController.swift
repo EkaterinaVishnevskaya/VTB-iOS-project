@@ -55,7 +55,7 @@ class DictionaryTableViewController: UIViewController {
     }
     
     private func loadData() {
-        wordModels = DictionaryDataManager.dataManager.read()
+        wordModels = DictionaryDataManager.shared.read()
     }
     
     private func setLayout() {
@@ -78,9 +78,8 @@ class DictionaryTableViewController: UIViewController {
         
         if #available(iOS 11.0, *) {
             navigationItem.largeTitleDisplayMode = .automatic
-        } else {
-            // Fallback on earlier versions
         }
+        
         title = "Dictionary"
         
         searchController.searchResultsUpdater = self
@@ -118,13 +117,13 @@ class DictionaryTableViewController: UIViewController {
             guard let word = alert.textFields?.first?.text else {
                 return
             }
-            TranslationAPIManager.translationAPIManager.translateFromEngToRus(word: word, completion: {translation in
+            TranslationAPIManager.shared.translateFromEngToRus(word: word, completion: {translation in
                 if let translation = translation {
                     let model = WordModel(word: word, translation: translation)
-                    DictionaryDataManager.dataManager.add(wordModel: model)
+                    DictionaryDataManager.shared.add(wordModel: model)
                     let queue = DispatchQueue.main
                     queue.async {
-                        self.wordModels = DictionaryDataManager.dataManager.read()
+                        self.wordModels = DictionaryDataManager.shared.read()
                     }
                 } else {
                     return
@@ -181,7 +180,7 @@ extension DictionaryTableViewController: UITableViewDelegate, UITableViewDataSou
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let delete = UITableViewRowAction(style: .destructive, title: "Delete") { (action, indexPath) in
-            DictionaryDataManager.dataManager.delete(wordModel: self.wordModels[indexPath.row])
+            DictionaryDataManager.shared.delete(wordModel: self.wordModels[indexPath.row])
             if self.isFiltering {
                 self.wordModels.remove(at: self.wordModels.firstIndex(where: {wordmodel in
                     return (wordmodel.word == self.filtredWordModels[indexPath.row].word) && (wordmodel.translation == self.filtredWordModels[indexPath.row].translation)

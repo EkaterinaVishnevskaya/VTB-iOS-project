@@ -11,18 +11,18 @@ import CoreData
 
 class DictionaryDataManager {
     
-    static let dataManager = DictionaryDataManager()
+    static let shared = DictionaryDataManager()
     private let appdelegate = UIApplication.shared.delegate as? AppDelegate
     
     //MARK: - Create
     func add(word: String) {
-        TranslationAPIManager.translationAPIManager.translateFromEngToRus(word: word, completion: {translation in
+        TranslationAPIManager.shared.translateFromEngToRus(word: word) {translation in
             if let translation = translation {
                 self.add(wordModel: WordModel(word: word, translation: translation))
             } else {
                 return
             }
-        })
+        }
     }
     
     func add(wordModel: WordModel) {
@@ -44,7 +44,7 @@ class DictionaryDataManager {
             fetchRequest.predicate = NSPredicate(format: "(word == %@) && (translation == %@)", word, translation)
             do {
                 let words = try context.fetch(fetchRequest)
-                if words.count>0 {
+                guard !words.isEmpty else {
                     print("\(word) - \(translation) have been added earlier")
                     return
                 }
