@@ -113,11 +113,11 @@ class DictionaryTableViewController: UIViewController {
         alert.addTextField(configurationHandler: { textField in
             textField.placeholder = "Input your word"
         })
-        alert.addAction(UIAlertAction(title: "Add", style: .default, handler: { action in
+        alert.addAction(UIAlertAction(title: "Add", style: .default) { action in
             guard let word = alert.textFields?.first?.text else {
                 return
             }
-            TranslationAPIManager.shared.translateFromEngToRus(word: word, completion: {translation in
+            TranslationAPIManager.shared.translateFromEngToRus(word: word) {translation in
                 if let translation = translation {
                     let model = WordModel(word: word, translation: translation)
                     DictionaryDataManager.shared.add(wordModel: model)
@@ -128,8 +128,8 @@ class DictionaryTableViewController: UIViewController {
                 } else {
                     return
                 }
-            })
-        }))
+            }
+        })
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         
         self.present(alert, animated: true)

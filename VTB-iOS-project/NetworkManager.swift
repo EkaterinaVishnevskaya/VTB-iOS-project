@@ -15,7 +15,7 @@ class NetworkManager: NSObject {
     enum HTTPMethod {
         static let put = "PUT"
         static let get = "GET"
-        static let  patch = "POST"
+        static let post = "POST"
     }
     
     enum NetworkErrors: Error {
@@ -99,7 +99,7 @@ class NetworkManager: NSObject {
             return
         }
         var request = URLRequest(url: url)
-        request.httpMethod = "POST"
+        request.httpMethod = HTTPMethod.post
         
         let task = URLSession.shared.dataTask(with: request, completionHandler: { data, response, error in
             

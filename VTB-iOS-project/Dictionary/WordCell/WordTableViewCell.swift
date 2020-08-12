@@ -40,6 +40,7 @@ class WordTableViewCell: UITableViewCell {
         addAndConfigureTranslationLabel()
         setConstraints()
     }
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -76,8 +77,8 @@ class WordTableViewCell: UITableViewCell {
             contentView.heightAnchor.constraint(lessThanOrEqualToConstant: Locals.maxCellHeight)
         ])
     }
-    // MARK: - Private
     
+    // MARK: - Private    
     private func updateContent(_ viewModel: WordModel) {
         wordLabel.text = viewModel.word
         translationLabel.text = viewModel.translation
