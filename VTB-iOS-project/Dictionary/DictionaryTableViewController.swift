@@ -113,7 +113,7 @@ class DictionaryTableViewController: UIViewController {
         alert.addTextField(configurationHandler: { textField in
             textField.placeholder = "Input your word"
         })
-        alert.addAction(UIAlertAction(title: "Add", style: .default) { action in
+        alert.addAction(UIAlertAction(title: "Add", style: .default) {[weak self] action in
             guard let word = alert.textFields?.first?.text else {
                 return
             }
@@ -123,7 +123,7 @@ class DictionaryTableViewController: UIViewController {
                     DictionaryDataManager.shared.add(wordModel: model)
                     let queue = DispatchQueue.main
                     queue.async {
-                        self.wordModels = DictionaryDataManager.shared.read()
+                        self?.wordModels = DictionaryDataManager.shared.read()
                     }
                 } else {
                     return
