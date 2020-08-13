@@ -15,7 +15,7 @@ class WordTableViewCell: UITableViewCell {
     
     enum Locals {
         static let cellID = "wordcell"
-        static let cellHeight: CGFloat = 100
+        static let maxCellHeight: CGFloat = 101
     }
     
     // MARK: - Properties
@@ -40,15 +40,9 @@ class WordTableViewCell: UITableViewCell {
         addAndConfigureTranslationLabel()
         setConstraints()
     }
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    
-    
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-        
-        // Configure the view for the selected state
     }
     
     //MARK: - UI
@@ -67,7 +61,7 @@ class WordTableViewCell: UITableViewCell {
         translationLabel.textColor = .white
         translationLabel.backgroundColor = .black
         translationLabel.lineBreakMode = .byWordWrapping
-        translationLabel.numberOfLines = 3
+        translationLabel.numberOfLines = 0
         translationLabel.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(translationLabel)
     }
@@ -75,15 +69,16 @@ class WordTableViewCell: UITableViewCell {
     private func setConstraints() {
         NSLayoutConstraint.activate([
             wordLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 5),
-            wordLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -5),
             wordLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 5),
             translationLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 5),
-            translationLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -5),
             translationLabel.topAnchor.constraint(equalTo: wordLabel.bottomAnchor, constant: 5),
+            translationLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -5),
+            translationLabel.heightAnchor.constraint(lessThanOrEqualToConstant: 61),
+            contentView.heightAnchor.constraint(lessThanOrEqualToConstant: Locals.maxCellHeight)
         ])
     }
-    // MARK: - Private
     
+    // MARK: - Private    
     private func updateContent(_ viewModel: WordModel) {
         wordLabel.text = viewModel.word
         translationLabel.text = viewModel.translation

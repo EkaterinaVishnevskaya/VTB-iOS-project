@@ -13,31 +13,34 @@ class TranslationAPIManager {
     private enum Constants {
         static let APIKey = "AIzaSyCZ0ZYon-YUkQhr8AyCvLe5QklgeurodJU"
     }
-    static let translationAPIManager = TranslationAPIManager()
+    static let shared = TranslationAPIManager()
     
     func translateFromEngToRus(word: String, completion: ((String?) -> Void)?) {
-        
-        let url = "https://translation.googleapis.com/language/translate/v2?q=\(word)&sourse=EN&target=RU&key=\(Constants.APIKey)"
-        NetworkManager.networkManager.requestGet(urlString: url) { result in
+        let formatedWord = word.split(separator: " ").joined(separator: "+")
+        let url = "https://translation.googleapis.com/language/translate/v2?q=\(formatedWord)&sourse=EN&target=RU&key=\(Constants.APIKey)"
+        NetworkManager.networkManager.requestPost(urlString: url) { result in
             switch result {
             case .success(let data):
                 guard let data = data else {
                     return
                 }
                 do{
-                    let jsonResult = try JSONDecoder().decode(JSONStructure.self, from: data)
-                    var translation = ""
-                    for i in 0 ..< jsonResult.translate.count {
-                        translation += "\(i+1). \(jsonResult.translate[i].translatedText)\n"
+                    let jsonResult = try JSONDecoder().decode(TranslationResponse.self, from: data)
+                    let traslationCount = jsonResult.data.translations.count
+                    var translation = traslationCount==1 ? jsonResult.data.translations[0].translatedText : "1. \( jsonResult.data.translations[0].translatedText)"
+                    for i in 1 ..< traslationCount {
+                        translation += "\n\(i+1). \(jsonResult.data.translations[i].translatedText)"
                     }
+                    print("Translation: \(word) -> \(translation)")
                     completion?(translation)
                 } catch {
+                    print ("JSON Error")
                     completion?(nil)
                 }
             case .failure:
+                print ("Network Error")
                 completion?(nil)
             }
         }
     }
 }
-

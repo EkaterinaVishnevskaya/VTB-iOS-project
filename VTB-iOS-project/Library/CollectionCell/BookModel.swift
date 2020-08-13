@@ -10,11 +10,13 @@ import UIKit
 
 struct BookModel {
     
-    var name: String
+    var title: String
+    var author: String
     var cover: UIImage
     
-    init(name: String) {
-        self.name = name
+    init(title: String) {
+        self.title = title
         self.cover = UIImage(named: "Book")!
+        self.author = "Unknown"
     }
 }

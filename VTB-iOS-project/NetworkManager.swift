@@ -15,7 +15,7 @@ class NetworkManager: NSObject {
     enum HTTPMethod {
         static let put = "PUT"
         static let get = "GET"
-        static let  patch = "POST"
+        static let post = "POST"
     }
     
     enum NetworkErrors: Error {
@@ -23,7 +23,7 @@ class NetworkManager: NSObject {
     }
     
     func requestGet (urlString: String, completion: @escaping (Result<Data?, NetworkErrors>) -> Void) {
-       guard let url = URL(string: urlString) else {
+        guard let url = URL(string: urlString) else {
             return
         }
         
@@ -34,15 +34,23 @@ class NetworkManager: NSObject {
                 return
             }
             
-            guard let response = response as? HTTPURLResponse, (200...299).contains(response.statusCode) else {
-                print("Server error!")
+            guard let response = response as? HTTPURLResponse else {
+                completion(.failure(.commonNetworkError))
+                print("Server Error!")
                 return
             }
             
+            guard (200...299).contains(response.statusCode) else {
+                print("Server error \(response.statusCode)!")
+                return
+            }
+            print("Status Code: \(response.statusCode)")
+            
+            
             if let data = data {completion(.success(data))
-                } else {
-                    completion(.failure(.commonNetworkError))
-                    return
+            } else {
+                completion(.failure(.commonNetworkError))
+                return
             }
         })
         
@@ -59,47 +67,64 @@ class NetworkManager: NSObject {
         
         let task = session.dataTask(with: request) { data, response, error in
             if error != nil {
+                completion(.failure(.commonNetworkError))
                 print("Client error!")
                 return
             }
             
-            if let httpResponse = response as? HTTPURLResponse {
-                print(httpResponse.statusCode)
+            guard let response = response as? HTTPURLResponse else {
+                completion(.failure(.commonNetworkError))
+                print("Server Error!")
+                return
             }
-        
+            
+            guard (200...299).contains(response.statusCode) else {
+                print("Server error \(response.statusCode)!")
+                return
+            }
+            print("Status Code: \(response.statusCode)")
+            
             if let data = data {completion(.success(data))
-                }   else {
+            }   else {
                 completion(.failure(.commonNetworkError))
                 return
-        }
+            }
         }
         
         task.resume()
     }
     
     func requestPost (urlString: String, completion: @escaping (Result<Data?, NetworkErrors>) -> Void) {
-       guard let url = URL(string: urlString) else {
+        guard let url = URL(string: urlString) else {
             return
         }
         var request = URLRequest(url: url)
-        request.httpMethod = "POST"
+        request.httpMethod = HTTPMethod.post
         
         let task = URLSession.shared.dataTask(with: request, completionHandler: { data, response, error in
             
             if error != nil || data == nil {
+                completion(.failure(.commonNetworkError))
                 print("Client error!")
                 return
             }
-
-            guard let response = response as? HTTPURLResponse, (200...299).contains(response.statusCode) else {
-                print("Server error!")
+            
+            guard let response = response as? HTTPURLResponse else {
+                completion(.failure(.commonNetworkError))
+                print("Server Error!")
                 return
             }
             
+            guard (200...299).contains(response.statusCode) else {
+                print("Server error \(response.statusCode)!")
+                return
+            }
+            print("Status Code: \(response.statusCode)")
+            
             if let data = data {completion(.success(data))
-                } else {
-                    completion(.failure(.commonNetworkError))
-                    return
+            } else {
+                completion(.failure(.commonNetworkError))
+                return
             }
         })
         

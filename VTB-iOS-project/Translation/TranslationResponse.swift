@@ -10,10 +10,14 @@ import UIKit
 
 struct TranslateTextResponseTranslation: Codable {
     let detectedSourceLanguage: String
-    let model: String
+    let model: String?
     let translatedText: String
 }
 
-struct JSONStructure: Codable {
-    let translate: [TranslateTextResponseTranslation]
+struct TranslationData: Codable {
+    let translations: [TranslateTextResponseTranslation]
+}
+
+struct TranslationResponse: Codable {
+    let data: TranslationData
 }

@@ -1,0 +1,16 @@
+{
+  "images" : [
+    {
+      "filename" : "lib-1.png",
+      "idiom" : "iphone"
+    },
+    {
+      "filename" : "lib.png",
+      "idiom" : "ipad"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

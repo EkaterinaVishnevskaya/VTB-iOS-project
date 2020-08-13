@@ -16,10 +16,11 @@ final class BookCollectionViewCell: UICollectionViewCell {
         static let cellID = "bookcell"
         static let height: CGFloat = 150
     }
-
+    
     // MARK: - Properties
     
-    private var nameLabel: UILabel!
+    private var titleLabel: UILabel!
+    private var authorLabel: UILabel!
     private var coverImageView: UIImageView!
     
     
@@ -34,7 +35,8 @@ final class BookCollectionViewCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        addAndConfigureNameView()
+        addAndConfigureTitleView()
+        addAndConfigureAuthorView()
         addAndConfigureCoverView()
         contentView.layer.borderWidth = 1
         contentView.layer.borderColor = UIColor.white.cgColor
@@ -49,7 +51,8 @@ final class BookCollectionViewCell: UICollectionViewCell {
     // MARK: - Public
     
     private func updateContent(viewModel: BookModel) {
-        nameLabel.text = viewModel.name
+        titleLabel.text = viewModel.title
+        authorLabel.text = viewModel.author
         coverImageView.image = viewModel.cover
     }
     
@@ -62,12 +65,21 @@ final class BookCollectionViewCell: UICollectionViewCell {
         contentView.addSubview(coverImageView)
     }
     
-    private func addAndConfigureNameView () {
-        nameLabel = UILabel()
-        nameLabel.textColor = .white
-        nameLabel.backgroundColor = .black
-        nameLabel.translatesAutoresizingMaskIntoConstraints = false
-        contentView.addSubview(nameLabel)
+    private func addAndConfigureTitleView () {
+        titleLabel = UILabel()
+        titleLabel.textColor = .white
+        //titleLabel.backgroundColor = .black
+        titleLabel.font = .boldSystemFont(ofSize: 24)
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        contentView.addSubview(titleLabel)
+    }
+    
+    private func addAndConfigureAuthorView () {
+        authorLabel = UILabel()
+        authorLabel.textColor = .lightGray
+        authorLabel.backgroundColor = .black
+        authorLabel.translatesAutoresizingMaskIntoConstraints = false
+        contentView.addSubview(authorLabel)
     }
     
     private func setConstraints() {
@@ -76,7 +88,9 @@ final class BookCollectionViewCell: UICollectionViewCell {
             coverImageView.topAnchor.constraint(equalTo: contentView.topAnchor),
             coverImageView.heightAnchor.constraint(equalTo: contentView.heightAnchor),
             coverImageView.widthAnchor.constraint(lessThanOrEqualToConstant: 100),
-            nameLabel.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 120)
+            titleLabel.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 120),
+            authorLabel.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 120),
+            authorLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 10)
         ])
     }
 }
