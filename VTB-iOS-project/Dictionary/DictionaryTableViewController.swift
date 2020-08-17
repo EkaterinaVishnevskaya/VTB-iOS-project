@@ -72,7 +72,12 @@ class DictionaryTableViewController: UIViewController {
     }
     
     private func setHeaderView() {
-        let addButton = UIBarButtonItem(title: "+", style: .plain, target: self, action: #selector(addWord))
+        var addButton = UIBarButtonItem()
+        if #available(iOS 13.0, *) {
+            addButton = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .plain, target: self, action: #selector(addWord))
+        } else {
+            addButton = UIBarButtonItem(title: "+", style: .plain, target: self, action: #selector(addWord))
+        }
         addButton.tintColor = .black
         navigationItem.rightBarButtonItem = addButton
         

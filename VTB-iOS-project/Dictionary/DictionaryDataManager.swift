@@ -113,7 +113,7 @@ class DictionaryDataManager {
         }
         do {
             try context.save()
-            print("\(word) is deleted")
+            print("\(word) translation updated")
         } catch  {
             print("Fail to save")
         }
