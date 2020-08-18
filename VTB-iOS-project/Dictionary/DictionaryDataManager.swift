@@ -12,9 +12,11 @@ import CoreData
 class DictionaryDataManager {
     
     static let shared = DictionaryDataManager()
+    // REVIEW: - На самом деле тебе не нужен appDelegate здесь, context лучше передать как зависимость в инициализаторе.
     private let appdelegate = UIApplication.shared.delegate as? AppDelegate
     
     //MARK: - Create
+    // REVIEW: - Особенность асинхронных методов - их результат часто непредсказуем. Конкретно в этом случае запрос может не пройти. В такие методы обычно добавляют completion с результатом. Аналогично по следующему методу add
     func add(word: String) {
         TranslationAPIManager.shared.translateFromEngToRus(word: word) {translation in
             if let translation = translation {
@@ -26,6 +28,7 @@ class DictionaryDataManager {
     }
     
     func add(wordModel: WordModel) {
+        // REVIEW: - Зачем это делать на главной очереди?
         let queue = DispatchQueue.main
         queue.async {
             

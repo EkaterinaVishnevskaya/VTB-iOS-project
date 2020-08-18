@@ -117,6 +117,7 @@ class DictionaryTableViewController: UIViewController {
             guard let word = alert.textFields?.first?.text else {
                 return
             }
+            // REVIEW: - Здесь у тебя много логики, которая должна быть инкапсулироваа где-то в менеджере перевода. У тебя есть  API менеджер, это ок, он работает на сетевом уровне. А должен быть менеджер над ним, который работает на бизнес-уровне
             TranslationAPIManager.shared.translateFromEngToRus(word: word) {translation in
                 if let translation = translation {
                     let model = WordModel(word: word, translation: translation)
