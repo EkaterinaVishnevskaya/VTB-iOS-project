@@ -1,11 +1,11 @@
 {
   "images" : [
     {
-      "filename" : "lib-1.png",
+      "filename" : "book.png",
       "idiom" : "iphone"
     },
     {
-      "filename" : "lib.png",
+      "filename" : "book-1.png",
       "idiom" : "ipad"
     }
   ],

@@ -185,13 +185,14 @@ extension DictionaryTableViewController: UITableViewDelegate, UITableViewDataSou
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let delete = UITableViewRowAction(style: .destructive, title: "Delete") { (action, indexPath) in
-            DictionaryDataManager.shared.delete(wordModel: self.wordModels[indexPath.row])
             if self.isFiltering {
+                DictionaryDataManager.shared.delete(wordModel: self.filtredWordModels[indexPath.row])
                 self.wordModels.remove(at: self.wordModels.firstIndex(where: {wordmodel in
                     return (wordmodel.word == self.filtredWordModels[indexPath.row].word) && (wordmodel.translation == self.filtredWordModels[indexPath.row].translation)
                 }) ?? -1)
                 self.filtredWordModels.remove(at: indexPath.row)
             } else {
+                DictionaryDataManager.shared.delete(wordModel: self.wordModels[indexPath.row])
                 self.wordModels.remove(at: indexPath.row)
             }
         }
