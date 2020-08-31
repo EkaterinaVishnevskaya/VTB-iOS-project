@@ -26,42 +26,38 @@ class DictionaryDataManager {
     }
     
     func add(wordModel: WordModel) {
-        let queue = DispatchQueue.main
-        queue.async {
-            
-            guard let context = self.appdelegate?.persistentContainer.viewContext else {
+        guard let context = self.appdelegate?.persistentContainer.viewContext else {
+            return
+        }
+        
+        guard let entity = NSEntityDescription.entity(forEntityName: "Dictionary", in: context) else {
+            return
+        }
+        
+        let word = wordModel.word
+        let translation = wordModel.translation
+        
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Dictionary")
+        fetchRequest.predicate = NSPredicate(format: "(word == %@) && (translation == %@)", word, translation)
+        do {
+            let words = try context.fetch(fetchRequest)
+            guard words.isEmpty else {
+                print("\(word) - \(translation) have been added earlier")
                 return
             }
-            
-            guard let entity = NSEntityDescription.entity(forEntityName: "Dictionary", in: context) else {
-                return
-            }
-            
-            let word = wordModel.word
-            let translation = wordModel.translation
-            
-            let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Dictionary")
-            fetchRequest.predicate = NSPredicate(format: "(word == %@) && (translation == %@)", word, translation)
-            do {
-                let words = try context.fetch(fetchRequest)
-                guard !words.isEmpty else {
-                    print("\(word) - \(translation) have been added earlier")
-                    return
-                }
-            } catch let error as NSError {
-                print("FetchRequesr Error: \(error.userInfo)")
-            }
-            
-            let wordEntity = NSManagedObject(entity: entity, insertInto: context)
-            wordEntity.setValue(word, forKey: "word")
-            wordEntity.setValue(translation, forKey: "translation")
-            
-            do {
-                try context.save()
-                print("\(word) - \(translation) is added ")
-            } catch  {
-                print("Fail to save")
-            }
+        } catch let error as NSError {
+            print("FetchRequesr Error: \(error.userInfo)")
+        }
+        
+        let wordEntity = NSManagedObject(entity: entity, insertInto: context)
+        wordEntity.setValue(word, forKey: "word")
+        wordEntity.setValue(translation, forKey: "translation")
+        
+        do {
+            try context.save()
+            print("\(word) - \(translation) is added ")
+        } catch  {
+            print("Fail to save")
         }
         
     }
@@ -113,7 +109,7 @@ class DictionaryDataManager {
         }
         do {
             try context.save()
-            print("\(word) is deleted")
+            print("\(word) translation updated")
         } catch  {
             print("Fail to save")
         }
