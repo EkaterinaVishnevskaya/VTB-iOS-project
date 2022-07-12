@@ -117,6 +117,7 @@ class NetworkManager: NSObject {
             
             guard (200...299).contains(response.statusCode) else {
                 print("Server error \(response.statusCode)!")
+                completion(.failure(.commonNetworkError))
                 return
             }
             print("Status Code: \(response.statusCode)")

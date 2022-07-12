@@ -123,24 +123,23 @@ class DictionaryTableViewController: UIViewController {
                 return
             }
             TranslationAPIManager.shared.translateFromEngToRus(word: word) {translation in
-                if let translation = translation {
-                    let model = WordModel(word: word, translation: translation)
-                    DictionaryDataManager.shared.add(wordModel: model)
-                    let queue = DispatchQueue.main
-                    queue.async {
-                        self?.wordModels = DictionaryDataManager.shared.read()
-                    }
-                } else {
-                    return
+                let model: WordModel
+                model = WordModel(word: word, translation: translation ?? "")
+                DictionaryDataManager.shared.add(wordModel: model)
+                
+                let queue = DispatchQueue.main
+                queue.async {
+                    self?.wordModels = DictionaryDataManager.shared.read()
                 }
             }
+            
+            
         })
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         
         self.present(alert, animated: true)
+        }
     }
-}
-
 // MARK: - UITableViewDelegate & UITableViewDataSource
 extension DictionaryTableViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
