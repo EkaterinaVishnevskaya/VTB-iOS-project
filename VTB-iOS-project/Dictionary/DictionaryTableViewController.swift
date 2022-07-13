@@ -132,8 +132,6 @@ class DictionaryTableViewController: UIViewController {
                     self?.wordModels = DictionaryDataManager.shared.read()
                 }
             }
-            
-            
         })
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         

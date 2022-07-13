@@ -15,7 +15,7 @@ class TranslationAPIManager {
     }
     static let shared = TranslationAPIManager()
     
-    func translateFromEngToRus(word: String, completion: ((String?) -> Void)?){
+    func translateFromEngToRus(word: String, completion: ((String?) -> Void)?) {
         let formatedWord = word.split(separator: " ").joined(separator: "+")
         let url = "https://translation.googleapis.com/language/translate/v2?q=\(formatedWord)&sourse=EN&target=RU&key=\(Constants.APIKey)"
         NetworkManager.networkManager.requestPost(urlString: url) { result in
