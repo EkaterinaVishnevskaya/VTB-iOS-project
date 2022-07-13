@@ -8,22 +8,10 @@
 
 import UIKit
 
-protocol ViewControllerInput {
-    func dataLoaded()
-}
-
 class LibraryViewController: UIViewController {
     
-    // MARK: - Constants
-    
-    private enum Locals {
-        static let cellID = "cell"
-        static let height: CGFloat = 150
-    }
-    
-    
     // MARK: - Properties
-
+    
     private var collectionView: UICollectionView!
     private var bookModels: [BookModel] = [] {
         didSet {
@@ -38,15 +26,17 @@ class LibraryViewController: UIViewController {
         super.viewDidLoad()
         setCollectionView()
         loadData()
-        
     }
     
+    
+    override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.willTransition(to: newCollection, with: coordinator)
+        collectionView.collectionViewLayout.invalidateLayout()
+    }
     
     // MARK: - Configurations
     
     private func setCollectionView() {
-        
-        let safeArea = view.safeAreaLayoutGuide
         
         let flowLayout = UICollectionViewFlowLayout ()
         flowLayout.scrollDirection = .vertical
@@ -56,14 +46,18 @@ class LibraryViewController: UIViewController {
         
         view.addSubview(collectionView)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([collectionView.topAnchor.constraint(equalTo: safeArea.topAnchor), collectionView.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor), collectionView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor),collectionView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor)
+        NSLayoutConstraint.activate([
+            collectionView.topAnchor.constraint(equalTo: view.topAnchor),
+            collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
-        collectionView.register(BookCollectionViewCell.self, forCellWithReuseIdentifier: Locals.cellID)
+        collectionView.register(BookCollectionViewCell.self, forCellWithReuseIdentifier: BookCollectionViewCell.Locals.cellID)
     }
-
+    
     private func loadData() {
         
-        bookModels = [BookModel(name: "one"), BookModel(name: "two"), BookModel(name: "three"), BookModel(name: "four"), BookModel(name: "five"), BookModel(name: "six"), BookModel(name: "seven"), BookModel(name: "eight"), BookModel(name: "nine"),BookModel(name: "ten"), BookModel(name: "un"), BookModel(name: "deux"),BookModel(name: "trois"), BookModel(name: "quatre"), BookModel(name: "cinq"),BookModel(name: "six"), BookModel(name: "sept"), BookModel(name: "huit"),BookModel(name: "neuf"), BookModel(name: "dix"), BookModel(name: "один"), BookModel(name: "два"),BookModel(name: "три"), BookModel(name: "четыре"), BookModel(name: "пять"),BookModel(name: "шесть"), BookModel(name: "семь"), BookModel(name: "восемь"),BookModel(name: "девять"), BookModel(name: "десять")]
+        bookModels = [BookModel(title: "one"), BookModel(title: "two"), BookModel(title: "three"), BookModel(title: "four"), BookModel(title: "five"), BookModel(title: "six"), BookModel(title: "seven"), BookModel(title: "eight"), BookModel(title: "nine"),BookModel(title: "ten"), BookModel(title: "un"), BookModel(title: "deux"),BookModel(title: "trois"), BookModel(title: "quatre"), BookModel(title: "cinq"),BookModel(title: "six"), BookModel(title: "sept"), BookModel(title: "huit"),BookModel(title: "neuf"), BookModel(title: "dix"), BookModel(title: "один"), BookModel(title: "два"),BookModel(title: "три"), BookModel(title: "четыре"), BookModel(title: "пять"),BookModel(title: "шесть"), BookModel(title: "семь"), BookModel(title: "восемь"),BookModel(title: "девять"), BookModel(title: "десять")]
     }
 }
 
@@ -77,12 +71,11 @@ extension LibraryViewController: UICollectionViewDataSource, UICollectionViewDel
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Locals.cellID, for: indexPath) as? BookCollectionViewCell {
-            cell.viewModel = bookModels[indexPath.row]
-            return cell
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BookCollectionViewCell.Locals.cellID, for: indexPath) as? BookCollectionViewCell else {
+            fatalError()
         }
-        
-        return UICollectionViewCell()
+        cell.viewModel = bookModels[indexPath.row]
+        return cell
     }
     
 }
@@ -91,7 +84,7 @@ extension LibraryViewController: UICollectionViewDataSource, UICollectionViewDel
 extension LibraryViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: UIScreen.main.bounds.width, height: Locals.height)
+        return CGSize(width: collectionView.frame.width, height: BookCollectionViewCell.Locals.height)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
@@ -100,12 +93,5 @@ extension LibraryViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-    }
-}
-
-extension LibraryViewController: ViewControllerInput {
-    
-    func dataLoaded() {
-        // Do something
     }
 }

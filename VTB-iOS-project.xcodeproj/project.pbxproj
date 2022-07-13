@@ -7,17 +7,28 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F034461924D40D5200CF1006 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F034461824D40D5200CF1006 /* TabBarController.swift */; };
+		F034461B24D5BD6700CF1006 /* WordDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F034461A24D5BD6600CF1006 /* WordDetailsViewController.swift */; };
+		F034461D24D998A300CF1006 /* DictionaryRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F034461C24D998A300CF1006 /* DictionaryRouter.swift */; };
+		F034461F24D9A3A400CF1006 /* DictionaryNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F034461E24D9A3A400CF1006 /* DictionaryNavigationController.swift */; };
+		F034462324DB39B200CF1006 /* DictionaryDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F034462224DB39B200CF1006 /* DictionaryDataManager.swift */; };
 		F03879A824A9F9CC00938079 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F03879A724A9F9CC00938079 /* AppDelegate.swift */; };
 		F03879AA24A9F9CC00938079 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F03879A924A9F9CC00938079 /* SceneDelegate.swift */; };
-		F03879AC24A9F9CC00938079 /* LibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F03879AB24A9F9CC00938079 /* LibraryViewController.swift */; };
-		F03879AF24A9F9CC00938079 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F03879AD24A9F9CC00938079 /* Main.storyboard */; };
 		F03879B124A9F9D000938079 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F03879B024A9F9D000938079 /* Assets.xcassets */; };
 		F03879B424A9F9D000938079 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F03879B224A9F9D000938079 /* LaunchScreen.storyboard */; };
 		F03879BF24A9F9D100938079 /* VTB_iOS_projectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F03879BE24A9F9D100938079 /* VTB_iOS_projectTests.swift */; };
 		F03879CA24A9F9D100938079 /* VTB_iOS_projectUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F03879C924A9F9D100938079 /* VTB_iOS_projectUITests.swift */; };
-		F0387A7F24B21C0D00938079 /* BookCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0387A7E24B21C0D00938079 /* BookCollectionViewCell.swift */; };
-		F0387A8124B21C7E00938079 /* BookModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0387A8024B21C7E00938079 /* BookModel.swift */; };
-		F0F87BAC24B704F700FBDBE5 /* Book.png in Resources */ = {isa = PBXBuildFile; fileRef = F0F87BAB24B704F700FBDBE5 /* Book.png */; };
+		F040993C24EAF9DD0060539D /* ExercisesNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F040993B24EAF9DD0060539D /* ExercisesNavigationController.swift */; };
+		F0BF106724D217C700AE61BB /* DictionaryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0BF106624D217C700AE61BB /* DictionaryTableViewController.swift */; };
+		F0BF106A24D217D300AE61BB /* WordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0BF106824D217D300AE61BB /* WordModel.swift */; };
+		F0BF106B24D217D300AE61BB /* WordTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0BF106924D217D300AE61BB /* WordTableViewCell.swift */; };
+		F0BF107524D21AFC00AE61BB /* LibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0BF107424D21AFC00AE61BB /* LibraryViewController.swift */; };
+		F0BF107A24D21B3800AE61BB /* BookCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0BF107824D21B3800AE61BB /* BookCollectionViewCell.swift */; };
+		F0BF107B24D21B3800AE61BB /* BookModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0BF107924D21B3800AE61BB /* BookModel.swift */; };
+		F0F87C3724BCC72600FBDBE5 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F0F87C3524BCC72600FBDBE5 /* DataModel.xcdatamodeld */; };
+		F0F87C3924BE5DE400FBDBE5 /* TranslationAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F87C3824BE5DE400FBDBE5 /* TranslationAPIManager.swift */; };
+		F0F87C3B24BF2E3600FBDBE5 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F87C3A24BF2E3600FBDBE5 /* NetworkManager.swift */; };
+		F0F87C3D24BF31B900FBDBE5 /* TranslationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F87C3C24BF31B900FBDBE5 /* TranslationResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,11 +49,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F034461824D40D5200CF1006 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		F034461A24D5BD6600CF1006 /* WordDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordDetailsViewController.swift; sourceTree = "<group>"; };
+		F034461C24D998A300CF1006 /* DictionaryRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryRouter.swift; sourceTree = "<group>"; };
+		F034461E24D9A3A400CF1006 /* DictionaryNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryNavigationController.swift; sourceTree = "<group>"; };
+		F034462224DB39B200CF1006 /* DictionaryDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DictionaryDataManager.swift; path = Dictionary/DictionaryDataManager.swift; sourceTree = "<group>"; };
 		F03879A424A9F9CC00938079 /* VTB-iOS-project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "VTB-iOS-project.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F03879A724A9F9CC00938079 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F03879A924A9F9CC00938079 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		F03879AB24A9F9CC00938079 /* LibraryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryViewController.swift; sourceTree = "<group>"; };
-		F03879AE24A9F9CC00938079 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F03879B024A9F9D000938079 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F03879B324A9F9D000938079 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F03879B524A9F9D000938079 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -52,9 +66,17 @@
 		F03879C524A9F9D100938079 /* VTB-iOS-projectUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "VTB-iOS-projectUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F03879C924A9F9D100938079 /* VTB_iOS_projectUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VTB_iOS_projectUITests.swift; sourceTree = "<group>"; };
 		F03879CB24A9F9D100938079 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F0387A7E24B21C0D00938079 /* BookCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookCollectionViewCell.swift; sourceTree = "<group>"; };
-		F0387A8024B21C7E00938079 /* BookModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookModel.swift; sourceTree = "<group>"; };
-		F0F87BAB24B704F700FBDBE5 /* Book.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Book.png; sourceTree = "<group>"; };
+		F040993B24EAF9DD0060539D /* ExercisesNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExercisesNavigationController.swift; sourceTree = "<group>"; };
+		F0BF106624D217C700AE61BB /* DictionaryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DictionaryTableViewController.swift; path = Dictionary/DictionaryTableViewController.swift; sourceTree = "<group>"; };
+		F0BF106824D217D300AE61BB /* WordModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WordModel.swift; path = Dictionary/WordCell/WordModel.swift; sourceTree = "<group>"; };
+		F0BF106924D217D300AE61BB /* WordTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WordTableViewCell.swift; path = Dictionary/WordCell/WordTableViewCell.swift; sourceTree = "<group>"; };
+		F0BF107424D21AFC00AE61BB /* LibraryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LibraryViewController.swift; path = Library/LibraryViewController.swift; sourceTree = "<group>"; };
+		F0BF107824D21B3800AE61BB /* BookCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BookCollectionViewCell.swift; path = Library/CollectionCell/BookCollectionViewCell.swift; sourceTree = "<group>"; };
+		F0BF107924D21B3800AE61BB /* BookModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BookModel.swift; path = Library/CollectionCell/BookModel.swift; sourceTree = "<group>"; };
+		F0F87C3624BCC72600FBDBE5 /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
+		F0F87C3824BE5DE400FBDBE5 /* TranslationAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationAPIManager.swift; sourceTree = "<group>"; };
+		F0F87C3A24BF2E3600FBDBE5 /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		F0F87C3C24BF31B900FBDBE5 /* TranslationResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,14 +127,18 @@
 		F03879A624A9F9CC00938079 /* VTB-iOS-project */ = {
 			isa = PBXGroup;
 			children = (
-				F0387A7D24B21BE600938079 /* CollectionCell */,
+				F040993A24EAF93C0060539D /* Exercises */,
+				F0F87C3E24BF34AC00FBDBE5 /* Translation */,
+				F0BF106524D2176E00AE61BB /* Dictionary */,
+				F0BF107324D21AEC00AE61BB /* Library */,
+				F034461824D40D5200CF1006 /* TabBarController.swift */,
+				F0F87C3A24BF2E3600FBDBE5 /* NetworkManager.swift */,
 				F03879A724A9F9CC00938079 /* AppDelegate.swift */,
 				F03879A924A9F9CC00938079 /* SceneDelegate.swift */,
-				F03879AB24A9F9CC00938079 /* LibraryViewController.swift */,
-				F03879AD24A9F9CC00938079 /* Main.storyboard */,
 				F03879B024A9F9D000938079 /* Assets.xcassets */,
 				F03879B224A9F9D000938079 /* LaunchScreen.storyboard */,
 				F03879B524A9F9D000938079 /* Info.plist */,
+				F0F87C3524BCC72600FBDBE5 /* DataModel.xcdatamodeld */,
 			);
 			path = "VTB-iOS-project";
 			sourceTree = "<group>";
@@ -135,14 +161,61 @@
 			path = "VTB-iOS-projectUITests";
 			sourceTree = "<group>";
 		};
-		F0387A7D24B21BE600938079 /* CollectionCell */ = {
+		F040993A24EAF93C0060539D /* Exercises */ = {
 			isa = PBXGroup;
 			children = (
-				F0387A7E24B21C0D00938079 /* BookCollectionViewCell.swift */,
-				F0387A8024B21C7E00938079 /* BookModel.swift */,
-				F0F87BAB24B704F700FBDBE5 /* Book.png */,
+				F040993B24EAF9DD0060539D /* ExercisesNavigationController.swift */,
 			);
-			path = CollectionCell;
+			path = Exercises;
+			sourceTree = "<group>";
+		};
+		F0BF106424D2174600AE61BB /* Word */ = {
+			isa = PBXGroup;
+			children = (
+				F034461A24D5BD6600CF1006 /* WordDetailsViewController.swift */,
+				F0BF106824D217D300AE61BB /* WordModel.swift */,
+				F0BF106924D217D300AE61BB /* WordTableViewCell.swift */,
+			);
+			name = Word;
+			sourceTree = "<group>";
+		};
+		F0BF106524D2176E00AE61BB /* Dictionary */ = {
+			isa = PBXGroup;
+			children = (
+				F0BF106424D2174600AE61BB /* Word */,
+				F034461E24D9A3A400CF1006 /* DictionaryNavigationController.swift */,
+				F0BF106624D217C700AE61BB /* DictionaryTableViewController.swift */,
+				F034461C24D998A300CF1006 /* DictionaryRouter.swift */,
+				F034462224DB39B200CF1006 /* DictionaryDataManager.swift */,
+			);
+			name = Dictionary;
+			sourceTree = "<group>";
+		};
+		F0BF107324D21AEC00AE61BB /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				F0BF107724D21B2600AE61BB /* Book */,
+				F0BF107424D21AFC00AE61BB /* LibraryViewController.swift */,
+			);
+			name = Library;
+			sourceTree = "<group>";
+		};
+		F0BF107724D21B2600AE61BB /* Book */ = {
+			isa = PBXGroup;
+			children = (
+				F0BF107824D21B3800AE61BB /* BookCollectionViewCell.swift */,
+				F0BF107924D21B3800AE61BB /* BookModel.swift */,
+			);
+			name = Book;
+			sourceTree = "<group>";
+		};
+		F0F87C3E24BF34AC00FBDBE5 /* Translation */ = {
+			isa = PBXGroup;
+			children = (
+				F0F87C3C24BF31B900FBDBE5 /* TranslationResponse.swift */,
+				F0F87C3824BE5DE400FBDBE5 /* TranslationAPIManager.swift */,
+			);
+			path = Translation;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -251,8 +324,6 @@
 			files = (
 				F03879B424A9F9D000938079 /* LaunchScreen.storyboard in Resources */,
 				F03879B124A9F9D000938079 /* Assets.xcassets in Resources */,
-				F03879AF24A9F9CC00938079 /* Main.storyboard in Resources */,
-				F0F87BAC24B704F700FBDBE5 /* Book.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -277,10 +348,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F0387A8124B21C7E00938079 /* BookModel.swift in Sources */,
-				F03879AC24A9F9CC00938079 /* LibraryViewController.swift in Sources */,
+				F034461D24D998A300CF1006 /* DictionaryRouter.swift in Sources */,
+				F0BF106A24D217D300AE61BB /* WordModel.swift in Sources */,
+				F0BF106B24D217D300AE61BB /* WordTableViewCell.swift in Sources */,
+				F034461B24D5BD6700CF1006 /* WordDetailsViewController.swift in Sources */,
+				F0BF106724D217C700AE61BB /* DictionaryTableViewController.swift in Sources */,
+				F0F87C3D24BF31B900FBDBE5 /* TranslationResponse.swift in Sources */,
+				F0BF107A24D21B3800AE61BB /* BookCollectionViewCell.swift in Sources */,
 				F03879A824A9F9CC00938079 /* AppDelegate.swift in Sources */,
-				F0387A7F24B21C0D00938079 /* BookCollectionViewCell.swift in Sources */,
+				F0BF107B24D21B3800AE61BB /* BookModel.swift in Sources */,
+				F0F87C3724BCC72600FBDBE5 /* DataModel.xcdatamodeld in Sources */,
+				F0F87C3B24BF2E3600FBDBE5 /* NetworkManager.swift in Sources */,
+				F0BF107524D21AFC00AE61BB /* LibraryViewController.swift in Sources */,
+				F034461924D40D5200CF1006 /* TabBarController.swift in Sources */,
+				F0F87C3924BE5DE400FBDBE5 /* TranslationAPIManager.swift in Sources */,
+				F034462324DB39B200CF1006 /* DictionaryDataManager.swift in Sources */,
+				F040993C24EAF9DD0060539D /* ExercisesNavigationController.swift in Sources */,
+				F034461F24D9A3A400CF1006 /* DictionaryNavigationController.swift in Sources */,
 				F03879AA24A9F9CC00938079 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -317,14 +401,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		F03879AD24A9F9CC00938079 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				F03879AE24A9F9CC00938079 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		F03879B224A9F9D000938079 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -386,7 +462,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -440,7 +516,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -604,6 +680,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		F0F87C3524BCC72600FBDBE5 /* DataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				F0F87C3624BCC72600FBDBE5 /* DataModel.xcdatamodel */,
+			);
+			currentVersion = F0F87C3624BCC72600FBDBE5 /* DataModel.xcdatamodel */;
+			path = DataModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = F038799C24A9F9CC00938079 /* Project object */;
 }
