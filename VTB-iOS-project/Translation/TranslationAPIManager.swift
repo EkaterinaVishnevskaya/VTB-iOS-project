@@ -22,6 +22,7 @@ class TranslationAPIManager {
             switch result {
             case .success(let data):
                 guard let data = data else {
+                    completion?(nil)
                     return
                 }
                 do{
