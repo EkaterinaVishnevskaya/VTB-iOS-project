@@ -25,7 +25,7 @@ class TabBarController: UITabBarController {
         let item2 = DictionaryNavigationController(rootViewController: DictionaryTableViewController())
         item2.tabBarItem = UITabBarItem(title: "Dictionary", image: UIImage(named: "Dictionary"), tag: 0)
         
-        let item3 = ExercisesNavigationController(rootViewController: UIViewController())
+        let item3 = ExercisesNavigationController(rootViewController: ExercisesViewController())
         item3.tabBarItem = UITabBarItem(title: "Exercises", image: UIImage(named: "Exercises"), tag: 0)
         self.viewControllers = [item1, item2, item3]
     }
