@@ -20,6 +20,7 @@ class NetworkManager: NSObject {
     
     enum NetworkErrors: Error {
         case commonNetworkError
+        case clientError
     }
     
     func requestGet (urlString: String, completion: @escaping (Result<Data?, NetworkErrors>) -> Void) {
@@ -30,6 +31,7 @@ class NetworkManager: NSObject {
         let task = URLSession.shared.dataTask(with: url, completionHandler: { data, response, error in
             
             if error != nil || data == nil {
+                completion(.failure(.clientError))
                 print("Client error!")
                 return
             }
@@ -42,6 +44,7 @@ class NetworkManager: NSObject {
             
             guard (200...299).contains(response.statusCode) else {
                 print("Server error \(response.statusCode)!")
+                completion(.failure(.commonNetworkError))
                 return
             }
             print("Status Code: \(response.statusCode)")
@@ -117,6 +120,7 @@ class NetworkManager: NSObject {
             
             guard (200...299).contains(response.statusCode) else {
                 print("Server error \(response.statusCode)!")
+                completion(.failure(.commonNetworkError))
                 return
             }
             print("Status Code: \(response.statusCode)")

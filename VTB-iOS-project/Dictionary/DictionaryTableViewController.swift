@@ -123,16 +123,12 @@ class DictionaryTableViewController: UIViewController {
                 return
             }
             TranslationAPIManager.shared.translateFromEngToRus(word: word) {translation in
-                if let translation = translation {
-                    let model = WordModel(word: word, translation: translation)
+                    let model = WordModel(word: word, translation: translation ?? "")
                     DictionaryDataManager.shared.add(wordModel: model)
                     let queue = DispatchQueue.main
                     queue.async {
                         self?.wordModels = DictionaryDataManager.shared.read()
                     }
-                } else {
-                    return
-                }
             }
         })
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
