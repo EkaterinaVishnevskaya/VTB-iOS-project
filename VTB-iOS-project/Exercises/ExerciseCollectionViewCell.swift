@@ -35,6 +35,7 @@ class ExerciseCollectionViewCell: UICollectionViewCell {
         addAndConfigureLabelView()
         contentView.layer.borderWidth = 1
         contentView.layer.borderColor = UIColor.white.cgColor
+        contentView.layer.cornerRadius = 20
         setConstraints()
         
     }

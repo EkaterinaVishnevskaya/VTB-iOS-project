@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C492B1A3287FC8A6006C1B04 /* StartExerciseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C492B1A2287FC8A5006C1B04 /* StartExerciseViewController.swift */; };
+		C492B1A5287FE2A4006C1B04 /* ExercisesRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C492B1A4287FE2A3006C1B04 /* ExercisesRouter.swift */; };
+		C4CA1EE1287EC5DF00678AA8 /* WordEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4CA1EE0287EC5DF00678AA8 /* WordEditViewController.swift */; };
 		C4ECDDB7287E7B5A003E8441 /* ExercisesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4ECDDB6287E7B5A003E8441 /* ExercisesViewController.swift */; };
 		C4ECDDB9287E7C0E003E8441 /* ExerciseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4ECDDB8287E7C0E003E8441 /* ExerciseCollectionViewCell.swift */; };
 		F034461924D40D5200CF1006 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F034461824D40D5200CF1006 /* TabBarController.swift */; };
@@ -51,6 +54,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C492B1A2287FC8A5006C1B04 /* StartExerciseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartExerciseViewController.swift; sourceTree = "<group>"; };
+		C492B1A4287FE2A3006C1B04 /* ExercisesRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExercisesRouter.swift; sourceTree = "<group>"; };
+		C4CA1EE0287EC5DF00678AA8 /* WordEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WordEditViewController.swift; path = Dictionary/WordEditViewController.swift; sourceTree = "<group>"; };
 		C4ECDDB6287E7B5A003E8441 /* ExercisesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ExercisesViewController.swift; path = "VTB-iOS-project/Exercises/ExercisesViewController.swift"; sourceTree = SOURCE_ROOT; };
 		C4ECDDB8287E7C0E003E8441 /* ExerciseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseCollectionViewCell.swift; sourceTree = "<group>"; };
 		F034461824D40D5200CF1006 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
@@ -171,6 +177,8 @@
 				C4ECDDB8287E7C0E003E8441 /* ExerciseCollectionViewCell.swift */,
 				F040993B24EAF9DD0060539D /* ExercisesNavigationController.swift */,
 				C4ECDDB6287E7B5A003E8441 /* ExercisesViewController.swift */,
+				C492B1A2287FC8A5006C1B04 /* StartExerciseViewController.swift */,
+				C492B1A4287FE2A3006C1B04 /* ExercisesRouter.swift */,
 			);
 			path = Exercises;
 			sourceTree = "<group>";
@@ -181,6 +189,7 @@
 				F034461A24D5BD6600CF1006 /* WordDetailsViewController.swift */,
 				F0BF106824D217D300AE61BB /* WordModel.swift */,
 				F0BF106924D217D300AE61BB /* WordTableViewCell.swift */,
+				C4CA1EE0287EC5DF00678AA8 /* WordEditViewController.swift */,
 			);
 			name = Word;
 			sourceTree = "<group>";
@@ -355,7 +364,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				F034461D24D998A300CF1006 /* DictionaryRouter.swift in Sources */,
+				C492B1A3287FC8A6006C1B04 /* StartExerciseViewController.swift in Sources */,
 				F0BF106A24D217D300AE61BB /* WordModel.swift in Sources */,
+				C492B1A5287FE2A4006C1B04 /* ExercisesRouter.swift in Sources */,
 				F0BF106B24D217D300AE61BB /* WordTableViewCell.swift in Sources */,
 				F034461B24D5BD6700CF1006 /* WordDetailsViewController.swift in Sources */,
 				F0BF106724D217C700AE61BB /* DictionaryTableViewController.swift in Sources */,
@@ -372,6 +383,7 @@
 				F034462324DB39B200CF1006 /* DictionaryDataManager.swift in Sources */,
 				C4ECDDB9287E7C0E003E8441 /* ExerciseCollectionViewCell.swift in Sources */,
 				F040993C24EAF9DD0060539D /* ExercisesNavigationController.swift in Sources */,
+				C4CA1EE1287EC5DF00678AA8 /* WordEditViewController.swift in Sources */,
 				F034461F24D9A3A400CF1006 /* DictionaryNavigationController.swift in Sources */,
 				F03879AA24A9F9CC00938079 /* SceneDelegate.swift in Sources */,
 			);

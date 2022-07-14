@@ -9,6 +9,12 @@
 import UIKit
 
 class ExercisesViewController: UIViewController {
+    enum Exercises {
+        static let TestEngRus = "Test Eng -> Rus"
+        static let TestRusEng = "Test Rus -> Eng"
+        static let TranslateWord = "Traslate word"
+        static let InsertLetter = "Insert letter"
+    }
     
     private var collectionView: UICollectionView!
     private var exercisesTypes: [String] = [] {
@@ -25,13 +31,7 @@ class ExercisesViewController: UIViewController {
         setCollectionView()
         loadData()
     }
-    
-    
-    override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
-        super.willTransition(to: newCollection, with: coordinator)
-        collectionView.collectionViewLayout.invalidateLayout()
-    }
-    
+
     // MARK: - Configurations
     
     private func setCollectionView() {
@@ -45,17 +45,17 @@ class ExercisesViewController: UIViewController {
         view.addSubview(collectionView)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            collectionView.topAnchor.constraint(equalTo: view.topAnchor),
-            collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+            collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -45),
+            collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            collectionView.topAnchor.constraint(equalTo: view.topAnchor)
         ])
-        collectionView.register(BookCollectionViewCell.self, forCellWithReuseIdentifier: ExerciseCollectionViewCell.Locals.cellID)
+        collectionView.register(ExerciseCollectionViewCell.self, forCellWithReuseIdentifier: ExerciseCollectionViewCell.Locals.cellID)
     }
     
     private func loadData() {
         
-        exercisesTypes = ["Test Eng To Rus", "Test Rus To Eng", "Traslate Rus to Eng"]
+        exercisesTypes = [Exercises.TestEngRus, Exercises.TestRusEng, Exercises.InsertLetter, Exercises.TranslateWord]
     }
 }
 
@@ -76,20 +76,38 @@ extension ExercisesViewController: UICollectionViewDataSource, UICollectionViewD
         return cell
     }
     
-}
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let router = ExercisesRouter()
+        router.viewController = self
+        switch indexPath.row {
+        case 0:
+            router.navigateToStartExerciseViewController(type: Exercises.TestEngRus)
+        case 1:
+            router.navigateToStartExerciseViewController(type: Exercises.TestRusEng)
+        case 2:
+            router.navigateToStartExerciseViewController(type: Exercises.InsertLetter)
+        case 3:
+            router.navigateToStartExerciseViewController(type: Exercises.TranslateWord)
+        default:
+            return
+        }
+    }
+    }
+    
+
 
 // MARK: - UICollectionViewDelegateFlowLayout
 extension ExercisesViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.frame.width, height: ExerciseCollectionViewCell.Locals.height)
+        return CGSize(width: collectionView.frame.width-40, height: ExerciseCollectionViewCell.Locals.height)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 0
+        return 40
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        return UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
     }
 }

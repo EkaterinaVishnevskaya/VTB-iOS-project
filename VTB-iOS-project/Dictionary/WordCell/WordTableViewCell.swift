@@ -73,7 +73,7 @@ class WordTableViewCell: UITableViewCell {
             translationLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 5),
             translationLabel.topAnchor.constraint(equalTo: wordLabel.bottomAnchor, constant: 5),
             translationLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -5),
-            translationLabel.heightAnchor.constraint(lessThanOrEqualToConstant: 61),
+            translationLabel.heightAnchor.constraint(lessThanOrEqualToConstant: 65),
             contentView.heightAnchor.constraint(lessThanOrEqualToConstant: Locals.maxCellHeight)
         ])
     }

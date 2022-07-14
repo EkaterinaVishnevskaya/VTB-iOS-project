@@ -27,7 +27,11 @@ class TabBarController: UITabBarController {
         
         let item3 = ExercisesNavigationController(rootViewController: ExercisesViewController())
         item3.tabBarItem = UITabBarItem(title: "Exercises", image: UIImage(named: "Exercises"), tag: 0)
-        self.viewControllers = [item1, item2, item3]
+        
+        let item4 = UIViewController()
+        item4.tabBarItem = UITabBarItem(title: "User", image: UIImage(named: "User"), tag: 0)
+        
+        self.viewControllers = [item1, item2, item3, item4]
     }
 }
 
