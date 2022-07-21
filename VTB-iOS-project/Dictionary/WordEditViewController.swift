@@ -24,7 +24,9 @@ class WordEditViewController: UIViewController {
         textView = UITextView()
         textView.translatesAutoresizingMaskIntoConstraints = false
         textView.text = word.translation
-        textView.backgroundColor = .black
+        textView.backgroundColor = .darkGray
+        textView.layer.borderWidth = 1
+        textView.layer.borderColor = UIColor.black.cgColor
         textView.textColor = .white
         
         okButton = UIButton()
@@ -49,10 +51,10 @@ class WordEditViewController: UIViewController {
         textView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
         textView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
         textView.heightAnchor.constraint(equalToConstant: 300),
-        okButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -90),
-        cancelButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -90),
-        okButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-        cancelButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20)
+        okButton.topAnchor.constraint(equalTo: textView.bottomAnchor, constant: 10),
+        cancelButton.topAnchor.constraint(equalTo: textView.bottomAnchor, constant: 10),
+        okButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
+        cancelButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40)
     ])
     }
     

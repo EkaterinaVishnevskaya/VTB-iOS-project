@@ -12,8 +12,8 @@ class ExercisesViewController: UIViewController {
     enum Exercises {
         static let TestEngRus = "Test Eng -> Rus"
         static let TestRusEng = "Test Rus -> Eng"
-        static let TranslateWord = "Traslate word"
         static let InsertLetter = "Insert letter"
+        static let TranslateWord = "Traslate word"
     }
     
     private var collectionView: UICollectionView!

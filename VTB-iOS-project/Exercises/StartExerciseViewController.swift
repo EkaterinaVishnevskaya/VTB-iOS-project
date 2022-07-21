@@ -19,6 +19,7 @@ class StartExerciseViewController: UIViewController {
         super.viewDidLoad()
         
         self.navigationController!.navigationBar.tintColor = .black
+        view.backgroundColor = .black
         
         exerciseTitleLabel.text = exercise
         exerciseTitleLabel.textColor = .white
@@ -30,7 +31,7 @@ class StartExerciseViewController: UIViewController {
         startButton.translatesAutoresizingMaskIntoConstraints = false
         startButton.setTitle("Start", for: .normal)
         startButton.setTitleColor(.white, for: .normal)
-        //startButton.addTarget(self, action: #selector(startExercise(_ type: string)), for: .touchUpInside)
+        startButton.addTarget(self, action: #selector(startExercise), for: .touchUpInside)
         view.addSubview(startButton)
         
         NSLayoutConstraint.activate([
@@ -44,6 +45,12 @@ class StartExerciseViewController: UIViewController {
     
     func setExercise(type: String) {
         self.exercise = type
+    }
+    
+    @objc func startExercise(){
+        let router = TasksRouter()
+        router.viewController = self
+        router.navigateToTaskViewController(type: exercise)
     }
 
 }

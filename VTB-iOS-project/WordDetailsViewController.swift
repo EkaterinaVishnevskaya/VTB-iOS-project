@@ -19,6 +19,7 @@ class WordDetailsViewController: UIViewController {
         super.viewDidLoad()
         
         view.backgroundColor = .black
+        self.navigationController!.navigationBar.backgroundColor = .white
         self.navigationController!.navigationBar.tintColor = .black
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .compose, target: self, action: #selector(startEdit))
         
@@ -43,7 +44,7 @@ class WordDetailsViewController: UIViewController {
             wordLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 100),
             translationLabel.topAnchor.constraint(equalTo: wordLabel.bottomAnchor, constant: 10),
             translationLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
-            translationLabel.trailingAnchor.constraint(lessThanOrEqualTo: view.trailingAnchor, constant: 30),
+            translationLabel.trailingAnchor.constraint(lessThanOrEqualTo: view.trailingAnchor, constant: -30),
         ])
     }
     
@@ -56,6 +57,5 @@ class WordDetailsViewController: UIViewController {
         controller.setWord(word)
         self.present(controller, animated:true, completion:nil)
     }
-    
     
 }

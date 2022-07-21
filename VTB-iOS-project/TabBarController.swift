@@ -19,7 +19,7 @@ class TabBarController: UITabBarController {
         tabBar.tintColor = .black
         tabBar.unselectedItemTintColor = .gray
         
-        let item1 = LibraryViewController()
+        let item1 = LibraryNavigationController(rootViewController: LibraryViewController())
         item1.tabBarItem = UITabBarItem(title: "Library", image: UIImage(named: "Library"), tag: 0)
         
         let item2 = DictionaryNavigationController(rootViewController: DictionaryTableViewController())

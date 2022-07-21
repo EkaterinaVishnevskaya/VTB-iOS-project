@@ -24,6 +24,10 @@ class LibraryViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.navigationController!.navigationBar.backgroundColor = .white
+        self.navigationController!.navigationBar.tintColor = .black
+        
         setCollectionView()
         loadData()
     }

@@ -7,8 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C466F6292881C6700088B747 /* TaskManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C466F6282881C6700088B747 /* TaskManager.swift */; };
+		C466F62B288241B50088B747 /* TestTaskModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C466F62A288241B50088B747 /* TestTaskModel.swift */; };
+		C466F63328867CDF0088B747 /* LibraryNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C466F63228867CDF0088B747 /* LibraryNavigationController.swift */; };
 		C492B1A3287FC8A6006C1B04 /* StartExerciseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C492B1A2287FC8A5006C1B04 /* StartExerciseViewController.swift */; };
 		C492B1A5287FE2A4006C1B04 /* ExercisesRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C492B1A4287FE2A3006C1B04 /* ExercisesRouter.swift */; };
+		C492B1E728808B8F006C1B04 /* TestEngRusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C492B1E628808B8E006C1B04 /* TestEngRusViewController.swift */; };
+		C492B1E928808BE1006C1B04 /* TestRusEngViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C492B1E828808BE1006C1B04 /* TestRusEngViewController.swift */; };
+		C492B1EB28808C3A006C1B04 /* TranslateWordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C492B1EA28808C3A006C1B04 /* TranslateWordViewController.swift */; };
+		C492B1ED28808C79006C1B04 /* InsertLetterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C492B1EC28808C79006C1B04 /* InsertLetterViewController.swift */; };
+		C492B1EF28809155006C1B04 /* TasksRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C492B1EE28809155006C1B04 /* TasksRouter.swift */; };
 		C4CA1EE1287EC5DF00678AA8 /* WordEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4CA1EE0287EC5DF00678AA8 /* WordEditViewController.swift */; };
 		C4ECDDB7287E7B5A003E8441 /* ExercisesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4ECDDB6287E7B5A003E8441 /* ExercisesViewController.swift */; };
 		C4ECDDB9287E7C0E003E8441 /* ExerciseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4ECDDB8287E7C0E003E8441 /* ExerciseCollectionViewCell.swift */; };
@@ -54,8 +62,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C466F6282881C6700088B747 /* TaskManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskManager.swift; sourceTree = "<group>"; };
+		C466F62A288241B50088B747 /* TestTaskModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestTaskModel.swift; sourceTree = "<group>"; };
+		C466F63228867CDF0088B747 /* LibraryNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LibraryNavigationController.swift; path = Library/LibraryNavigationController.swift; sourceTree = "<group>"; };
 		C492B1A2287FC8A5006C1B04 /* StartExerciseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartExerciseViewController.swift; sourceTree = "<group>"; };
 		C492B1A4287FE2A3006C1B04 /* ExercisesRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExercisesRouter.swift; sourceTree = "<group>"; };
+		C492B1E628808B8E006C1B04 /* TestEngRusViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestEngRusViewController.swift; sourceTree = "<group>"; };
+		C492B1E828808BE1006C1B04 /* TestRusEngViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestRusEngViewController.swift; sourceTree = "<group>"; };
+		C492B1EA28808C3A006C1B04 /* TranslateWordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslateWordViewController.swift; sourceTree = "<group>"; };
+		C492B1EC28808C79006C1B04 /* InsertLetterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsertLetterViewController.swift; sourceTree = "<group>"; };
+		C492B1EE28809155006C1B04 /* TasksRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TasksRouter.swift; path = Tasks/TasksRouter.swift; sourceTree = "<group>"; };
 		C4CA1EE0287EC5DF00678AA8 /* WordEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WordEditViewController.swift; path = Dictionary/WordEditViewController.swift; sourceTree = "<group>"; };
 		C4ECDDB6287E7B5A003E8441 /* ExercisesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ExercisesViewController.swift; path = "VTB-iOS-project/Exercises/ExercisesViewController.swift"; sourceTree = SOURCE_ROOT; };
 		C4ECDDB8287E7C0E003E8441 /* ExerciseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -114,6 +130,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C492B1E528808B45006C1B04 /* Tasks */ = {
+			isa = PBXGroup;
+			children = (
+				C492B1E628808B8E006C1B04 /* TestEngRusViewController.swift */,
+				C492B1E828808BE1006C1B04 /* TestRusEngViewController.swift */,
+				C492B1EC28808C79006C1B04 /* InsertLetterViewController.swift */,
+				C492B1EA28808C3A006C1B04 /* TranslateWordViewController.swift */,
+				C466F6282881C6700088B747 /* TaskManager.swift */,
+				C466F62A288241B50088B747 /* TestTaskModel.swift */,
+			);
+			path = Tasks;
+			sourceTree = "<group>";
+		};
 		F038799B24A9F9CC00938079 = {
 			isa = PBXGroup;
 			children = (
@@ -174,10 +203,12 @@
 		F040993A24EAF93C0060539D /* Exercises */ = {
 			isa = PBXGroup;
 			children = (
+				C492B1E528808B45006C1B04 /* Tasks */,
 				C4ECDDB8287E7C0E003E8441 /* ExerciseCollectionViewCell.swift */,
 				F040993B24EAF9DD0060539D /* ExercisesNavigationController.swift */,
 				C4ECDDB6287E7B5A003E8441 /* ExercisesViewController.swift */,
 				C492B1A2287FC8A5006C1B04 /* StartExerciseViewController.swift */,
+				C492B1EE28809155006C1B04 /* TasksRouter.swift */,
 				C492B1A4287FE2A3006C1B04 /* ExercisesRouter.swift */,
 			);
 			path = Exercises;
@@ -211,6 +242,7 @@
 			children = (
 				F0BF107724D21B2600AE61BB /* Book */,
 				F0BF107424D21AFC00AE61BB /* LibraryViewController.swift */,
+				C466F63228867CDF0088B747 /* LibraryNavigationController.swift */,
 			);
 			name = Library;
 			sourceTree = "<group>";
@@ -373,16 +405,24 @@
 				F0F87C3D24BF31B900FBDBE5 /* TranslationResponse.swift in Sources */,
 				F0BF107A24D21B3800AE61BB /* BookCollectionViewCell.swift in Sources */,
 				F03879A824A9F9CC00938079 /* AppDelegate.swift in Sources */,
+				C492B1E928808BE1006C1B04 /* TestRusEngViewController.swift in Sources */,
+				C466F63328867CDF0088B747 /* LibraryNavigationController.swift in Sources */,
+				C492B1EB28808C3A006C1B04 /* TranslateWordViewController.swift in Sources */,
+				C466F62B288241B50088B747 /* TestTaskModel.swift in Sources */,
 				F0BF107B24D21B3800AE61BB /* BookModel.swift in Sources */,
+				C466F6292881C6700088B747 /* TaskManager.swift in Sources */,
 				F0F87C3724BCC72600FBDBE5 /* DataModel.xcdatamodeld in Sources */,
+				C492B1E728808B8F006C1B04 /* TestEngRusViewController.swift in Sources */,
 				F0F87C3B24BF2E3600FBDBE5 /* NetworkManager.swift in Sources */,
 				F0BF107524D21AFC00AE61BB /* LibraryViewController.swift in Sources */,
 				C4ECDDB7287E7B5A003E8441 /* ExercisesViewController.swift in Sources */,
 				F034461924D40D5200CF1006 /* TabBarController.swift in Sources */,
+				C492B1EF28809155006C1B04 /* TasksRouter.swift in Sources */,
 				F0F87C3924BE5DE400FBDBE5 /* TranslationAPIManager.swift in Sources */,
 				F034462324DB39B200CF1006 /* DictionaryDataManager.swift in Sources */,
 				C4ECDDB9287E7C0E003E8441 /* ExerciseCollectionViewCell.swift in Sources */,
 				F040993C24EAF9DD0060539D /* ExercisesNavigationController.swift in Sources */,
+				C492B1ED28808C79006C1B04 /* InsertLetterViewController.swift in Sources */,
 				C4CA1EE1287EC5DF00678AA8 /* WordEditViewController.swift in Sources */,
 				F034461F24D9A3A400CF1006 /* DictionaryNavigationController.swift in Sources */,
 				F03879AA24A9F9CC00938079 /* SceneDelegate.swift in Sources */,
@@ -551,6 +591,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = KB78728XBL;
 				INFOPLIST_FILE = "VTB-iOS-project/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -568,6 +609,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = KB78728XBL;
 				INFOPLIST_FILE = "VTB-iOS-project/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
